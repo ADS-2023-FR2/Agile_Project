@@ -2,22 +2,98 @@
 <html>
 <head>
     <title>Login or Register</title>
+    <style>
+        /* Styles for the modal */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgba(0, 0, 0, 0.4); /* Overlay background */
+        }
+
+        /* Modal content */
+        .modal-content {
+            background-color: #f4f4f4;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 50%;
+            text-align: center;
+        }
+
+        /* Close button */
+        .close {
+            color: #aaaaaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close:hover {
+            color: #000;
+        }
+    </style>
 </head>
 <body>
     <h1>Login or Register</h1>
-    <form method="POST" action="/login">
-        <label for="username">Username:</label>
-        <input type="text" name="username" id="username" required><br>
-        <label for="password">Password:</label>
-        <input type="password" name="password" id="password" required><br>
-        <input type="submit" value="Login">
-    </form>
-    <form method="POST" action="/register">
+    <form method="POST" action="/register" onsubmit="registerUser(event)">
         <label for="reg_username">Username:</label>
         <input type="text" name="reg_username" id="reg_username" required><br>
         <label for="reg_password">Password:</label>
         <input type="password" name="reg_password" id="reg_password" required><br>
         <input type="submit" value="Register">
     </form>
+    <form method="POST" action="/login" onsubmit="return validateForm('username', 'password');">
+        <input type="submit" value="Login">
+    </form>
+    <!-- Modal dialog -->
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="closeModal">&times;</span>
+            <p id="registration-message">Registration completed!</p>
+        </div>
+    </div>
+
+    <script>
+        function registerUser(event) {
+            event.preventDefault(); // Prevent the form submission
+
+            const reg_username = document.getElementById('reg_username').value;
+            const reg_password = document.getElementById('reg_password').value;
+
+            const formData = new FormData();
+            formData.append('reg_username', reg_username);
+            formData.append('reg_password', reg_password);
+
+            fetch('/register', {
+                method: 'POST',
+                body: formData,
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    const modal = document.getElementById('myModal');
+                    const registrationMessage = document.getElementById('registration-message');
+                    modal.style.display = 'block';
+                    registrationMessage.textContent = 'Registration completed!';
+                } else {
+                    alert('Registration failed.');
+                }
+            });
+        }
+
+        // Close the modal dialog
+        const closeModal = document.getElementById('closeModal');
+        closeModal.addEventListener('click', function() {
+            const modal = document.getElementById('myModal');
+            modal.style.display = 'none';
+        });
+    </script>
 </body>
 </html>
