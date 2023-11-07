@@ -17,15 +17,6 @@ with open('users.json', 'r') as user_file:
 # Define a main route
 @app.route('/', methods=['GET', 'POST'])
 def main_page():
-    if request.method == 'POST':
-        username = request.form['username']
-        password = request.form['password']
-        for user in user_data['users']:
-            if user['username'] == username and user['password'] == password:
-                session['username'] = username
-                return redirect(url_for('hello'))
-        else:
-            return "Invalid login"
     return render_template('main.html')
 
 # Define the login route
@@ -37,9 +28,9 @@ def login():
     for user in user_data['users']:
         if user['username'] == username and user['password'] == password:
             session['username'] = username
-            return redirect(url_for('hello'))
-
-    return "Invalid login"
+            return jsonify({'success': True, 'message': 'Login successful'})
+    
+    return jsonify({'success': False, 'message': 'Invalid login'})
 
 # Define the registration route
 @app.route('/register', methods=['POST'])
@@ -59,7 +50,10 @@ def register():
 
     return jsonify({'success': True})
 
-# Rest of your code remains the same
+
+@app.route('/hello', methods=['GET'])
+def hello():
+    return render_template('hello.html')
 
 # Run the app
 if __name__ == '__main__':
