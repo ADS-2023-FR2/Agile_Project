@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for, session, jsonify
+from flask import Flask, render_template, request, redirect, url_for, session, jsonify, send_from_directory
 import os
 import json
 
@@ -50,6 +50,9 @@ def register():
 
     return jsonify({'success': True})
 
+@app.route('/image/<path:filename>')
+def serve_image(filename):
+    return send_from_directory('images', filename)
 
 @app.route('/hello', methods=['GET'])
 def hello():

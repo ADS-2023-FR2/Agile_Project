@@ -3,6 +3,7 @@
 <head>
     <title>Login or Register</title>
     <style>
+        
         /* Styles for the modal */
         .modal {
             display: none; /* Hidden by default */
@@ -14,6 +15,13 @@
             height: 100%; /* Full height */
             overflow: auto; /* Enable scroll if needed */
             background-color: rgba(0, 0, 0, 0.4); /* Overlay background */
+        }
+        /* Background image for the body */
+        body {
+            background-image: url('{{ url_for('serve_image', filename='banner.jpg') }}');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
         }
 
         /* Modal content */
@@ -38,20 +46,55 @@
         .close:hover {
             color: #000;
         }
+
+        /* Centering container for content below the heading */
+        .center-container {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+            }
+
+        /* Container for the form elements with a background */
+        .form-container {
+            color: #fff; /* Text color for the heading */
+            padding: 20px; /* Add padding for spacing */
+            text-align: center;
+            background: rgba(0, 0, 0, 0.4); /* Semi-transparent background color */
+        }
+        /* Container for the heading at the top */
+        .top-container {
+            text-align: center;
+            padding: 20px; /* Add padding for spacing */
+            background: rgba(0, 0, 0, 0.4); /* Semi-transparent background color */
+        }
+
+        /* Style for the heading */
+        h1 {
+            color: #fff; /* Text color for the heading */
+            margin: 0; /* Remove default margin for the heading */
+        }
     </style>
 </head>
 <body>
-    <h1>Login or Register</h1>
-    <form method="POST" action="/register" onsubmit="registerUser(event)">
-        <label for="reg_username">Username:</label>
-        <input type="text" name="reg_username" id="reg_username" required><br>
-        <label for="reg_password">Password:</label>
-        <input type="password" name="reg_password" id="reg_password" required><br>
-        <input type="submit" value="Register">
-    </form>
-    <form method="POST" action="/login" onsubmit="return validateForm();">
-        <input type="submit" value="Login">
-    </form>
+    <div class="top-container">
+        <h1>Login or Register</h1>
+    </div>
+    <div class="center-container">
+        <form method="POST" action="/register" onsubmit="registerUser(event)">
+            <div class="form-container">
+                <label for="reg_username">Username:</label>
+                <input type="text" name="reg_username" id="reg_username" required><br>
+                <label for="reg_password">Password:</label>
+                <input type="password" name="reg_password" id="reg_password" required><br>
+                <input type="submit" value="Register">
+            </div>
+        </form>
+        <form method="POST" action="/login" onsubmit="return validateForm();">
+            <input type="submit" value="Login">
+        </form>
+    </div>
     <!-- Modal dialog -->
     <div id="myModal" class="modal">
         <div class="modal-content">
