@@ -3,83 +3,14 @@
 <head>
     <title>Login or Register</title>
     <style>
-        
-        /* Styles for the modal */
-        .modal {
-            display: none; /* Hidden by default */
-            position: fixed; /* Stay in place */
-            z-index: 1; /* Sit on top */
-            left: 0;
-            top: 0;
-            width: 100%; /* Full width */
-            height: 100%; /* Full height */
-            overflow: auto; /* Enable scroll if needed */
-            background-color: rgba(0, 0, 0, 0.4); /* Overlay background */
-        }
-        /* Background image for the body */
         body {
             background-image: url('{{ url_for('serve_image', filename='banner.jpg') }}');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
         }
-
-        /* Modal content */
-        .modal-content {
-            background-color: #f4f4f4;
-            margin: 15% auto;
-            padding: 20px;
-            border: 1px solid #888;
-            width: 50%;
-            text-align: center;
-        }
-
-        /* Close button */
-        .close {
-            color: #aaaaaa;
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
-            cursor: pointer;
-        }
-
-        .close:hover {
-            color: #000;
-        }
-
-        /* Centering container for content below the heading */
-        .center-container {
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-                height: 100vh;
-            }
-
-        /* Container for the form elements with a background */
-        .form-container {
-            color: #fff; /* Text color for the heading */
-            padding: 20px; /* Add padding for spacing */
-            text-align: center;
-            background: rgba(0, 0, 0, 0.4); /* Semi-transparent background color */
-        }
-        /* Container for the heading at the top */
-        .top-container {
-            text-align: center;
-            padding: 20px; /* Add padding for spacing */
-            background: rgba(0, 0, 0, 0.4); /* Semi-transparent background color */
-        }
-
-        /* Style for the heading */
-        h1 {
-            color: #fff; /* Text color for the heading */
-            margin: 0; /* Remove default margin for the heading */
-        }
-        .center-container form {
-        display: inline-block;
-        margin-right: 10px; /* Add spacing between the buttons */
-        }
     </style>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('serve_css', filename='css/style.css') }}">
 </head>
 <body>
     <div class="top-container">
@@ -110,7 +41,7 @@
         </div>
     </div>
 
-<script src="{{ url_for('serve_js', filename='utils.js') }}"></script>
+<script src="{{ url_for('serve_js', filename='js/utils.js') }}"></script>
 
 </body>
 </html>

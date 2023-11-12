@@ -58,6 +58,10 @@ def serve_image(filename):
 def serve_js(filename):
     return send_from_directory('static', filename)
 
+@app.route('/static/<path:filename>')
+def serve_css(filename):
+    return send_from_directory('static', filename)
+
 @app.route('/hello', methods=['GET'])
 def hello():
     return render_template('hello.html')
