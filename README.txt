@@ -2,7 +2,7 @@ This README contains information about the scripts of the spotlight deployment. 
 
 1.- fit_newmodel_from_movielens_dataset.py
 
-This script fits a model based on one of movielens dataset. 
+This script fits a Explicit Factorization Model based on one of movielens dataset. 
 Arguments:
 	--input: Path to the folder that contains spotlight. By the moment, I can not import spotlight from the github repo, so I just copied to the same directory the spotlight repository. Default = 'None'.
 	--variant: Variant of movielens model. Accepted values: '100K','1M','10M','20M'. Default = '100K'.
@@ -24,29 +24,18 @@ Arguments:
 	--out_dataset: Output path of the dataset (csv file). Default = 'None'.
 
 3.- fit_newmodel.py
-Creates a new Implicit Sequence Model using a sequential dataset, that can be imported or created in this script.
+Creates a new Explicit Factorization Model using a previous dataset.
 Arguments:
 	--input: Path to the folder that contains spotlight. By the moment, I can not import spotlight from the github repo, so I just copied to the same directory the spotlight repository. Default = 'None'.
 	--in_dataset: Input path of the dataset (csv file). If not provided, the script will created and if you want, you can export it. Default = 'None'.
-	--nusers: Number of users in the dataset. Default = 100.
-	--nitems: Number of items in the dataset. Default = 1000.
-	--niteractions: Number of interactions in the dataset. Default = 10000
-	--concentration: Concentration rate. Default = 0.05
-	--order: Order of the dataset. Default = 3
-	--out_dataset: Output path of the dataset (csv file). Default = 'None'.	
+	--niter: Number of iterations of the fit. Default = 3.	
 	--out_model: Output path of the model (binary pkl file). Default = 'None'.
 	--out_predictions: Output path of the predictions of the test set (csv file). Default = 'None'.
 
 4.- predict_previousmodel.py
-Makes a prediction of a dataset using a previously fitted model. The dataset is a sequential dataset and the model is a Implicit Sequence Model.
+Makes a prediction of a dataset using a previously fitted model. The dataset must be imported and the model is a Explicit Factorization Model.
 Arguments:
 	--input: Path to the folder that contains spotlight. By the moment, I can not import spotlight from the github repo, so I just copied to the same directory the spotlight repository. Default = 'None'.
 	--in_model: Input path of the pretrained model (binary pkl file). If not provided, exit().
 	--in_dataset: Input path of the dataset (csv file). If not provided, the script will created and if you want, you can export it. Default = 'None'.
-	--nusers: Number of users in the dataset. Default = 100.
-	--nitems: Number of items in the dataset. Default = 1000.
-	--niteractions: Number of interactions in the dataset. Default = 10000
-	--concentration: Concentration rate. Default = 0.05
-	--order: Order of the dataset. Default = 3
-	--out_dataset: Output path of the dataset (csv file). Default = 'None'.	
 	--out_predictions: Output path of the predictions of the test set (csv file). Default = 'None'.
