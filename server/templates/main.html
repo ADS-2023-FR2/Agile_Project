@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login or Register</title>
+    <style>
+        body {
+            background-image: url('{{ url_for('serve_image', filename='banner.jpg') }}');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+    </style>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('serve_css', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="top-container">
+        <h1>Login or Register</h1>
+    </div>
+    <div class="center-container">
+        <div class="form-container">
+            <label for="reg_username">Username:</label>
+            <input type="text" name="reg_username" id="reg_username" required><br>
+            <label for="reg_password">Password:</label>
+            <input type="password" name="reg_password" id="reg_password" required><br>
+            <div class="center-buttons">
+                <form method="POST" action="/register" onsubmit="registerUser(event)">
+                    <input type="submit" value="Register">
+                </form>
+                <form method="POST" action="/login" onsubmit="return validateForm();">
+                    <input type="submit" value="Login">
+                </form>
+            </div>
+            
+        </div>
+    </div>
+    <!-- Modal dialog -->
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="closeModal">&times;</span>
+            <p id="registration-message">Registration completed!</p>
+        </div>
+    </div>
+
+<script src="{{ url_for('serve_js', filename='js/utils.js') }}"></script>
+
+</body>
+</html>
