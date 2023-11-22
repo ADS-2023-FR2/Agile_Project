@@ -45,4 +45,3 @@ def process(folder,nusers,nitems,ninteractions,concentration,order,out_dataset):
 
 if __name__ == '__main__':
     main()
-
