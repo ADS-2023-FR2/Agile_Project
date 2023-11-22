@@ -35,7 +35,7 @@ def process(folder, var, niter, out_model, out_dataset,out_predictions):
     
     #print (dataset.sequences.user_ids)
     
-    train, test = random_train_test_split(dataset)
+    train, test = random_train_test_split(dataset,test_percentage=0.2)
     
     #interactions = Interactions(dataset)
     # ... (cargar o crear el conjunto de datos)
