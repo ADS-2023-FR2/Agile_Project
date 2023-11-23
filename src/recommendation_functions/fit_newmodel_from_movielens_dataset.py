@@ -1,4 +1,14 @@
+import pandas as pd
+import pickle
 import argparse
+
+import sys
+sys.path.append('../')
+from spotlight.cross_validation import random_train_test_split
+from spotlight.datasets.movielens import get_movielens_dataset
+from spotlight.evaluation import rmse_score
+from spotlight.factorization.explicit import ExplicitFactorizationModel
+
 
 def main():
     parser = argparse.ArgumentParser(description='REQUIREMENTS: pandas,spotlight,,pickle,sys')
@@ -18,12 +28,6 @@ def process(folder, var, niter, out_model, out_dataset,out_predictions):
     if folder != 'None':
         import sys  
         sys.path.insert(0, folder)
-    from spotlight.cross_validation import random_train_test_split
-    from spotlight.datasets.movielens import get_movielens_dataset
-    from spotlight.evaluation import rmse_score
-    from spotlight.factorization.explicit import ExplicitFactorizationModel
-    import pandas as pd
-    import pickle
     
     possible_variants = ['100K','1M','10M','20M']
     

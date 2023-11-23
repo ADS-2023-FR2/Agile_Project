@@ -1,4 +1,11 @@
+import pandas as pd
+import pickle
 import argparse
+
+import sys
+sys.path.append('../')
+from spotlight.interactions import Interactions
+from spotlight.evaluation import rmse_score
 
 def main():
     parser = argparse.ArgumentParser(description='REQUIREMENTS: pandas,spotlight,,pickle,sys,numpy')
@@ -17,10 +24,6 @@ def process(folder,in_model,in_dataset,out_predictions):
     if folder != 'None':
         import sys  
         sys.path.insert(0, folder)
-    from spotlight.interactions import Interactions
-    from spotlight.evaluation import rmse_score
-    import pandas as pd
-    import pickle
     
     if in_dataset != 'None':
         try:

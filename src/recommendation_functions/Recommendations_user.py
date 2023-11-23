@@ -1,4 +1,7 @@
+import pandas as pd
 import argparse
+
+import predict_1user
 
 def main():
     parser = argparse.ArgumentParser(description='REQUIREMENTS: pandas,spotlight,,pickle,sys,numpy')
@@ -14,11 +17,9 @@ def main():
 
 def get_ratings (folder,in_model,in_dataset,user,out_predictions,top):
     
-    import pandas as pd
     if folder != 'None':
         import sys  
         sys.path.insert(0, folder)
-    import predict_1user
           
     df_no_watched = predict_1user.process(folder,in_model,in_dataset,user,'None')
     

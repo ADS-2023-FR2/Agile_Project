@@ -1,4 +1,9 @@
+import pandas as pd
 import argparse
+
+import sys
+sys.path.append('../')
+from spotlight.datasets.synthetic import generate_sequential
 
 def main():
     parser = argparse.ArgumentParser(description='REQUIREMENTS: pandas,spotlight,sys')
@@ -19,7 +24,7 @@ def process(folder,nusers,nitems,ninteractions,concentration,order,out_dataset):
     if folder != 'None':
         import sys  
         sys.path.insert(0, folder)
-    from spotlight.datasets.synthetic import generate_sequential
+    
     import pandas as pd
     
     

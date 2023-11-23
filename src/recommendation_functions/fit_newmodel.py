@@ -1,4 +1,14 @@
+import numpy as np
+import pandas as pd
+import pickle
 import argparse
+
+import sys
+sys.path.append('../')
+from spotlight.cross_validation import random_train_test_split
+from spotlight.interactions import Interactions
+from spotlight.evaluation import rmse_score
+from spotlight.factorization.explicit import ExplicitFactorizationModel 
 
 def main():
     parser = argparse.ArgumentParser(description='REQUIREMENTS: pandas,spotlight,,pickle,sys')
@@ -17,14 +27,6 @@ def process(folder,in_dataset,niter,out_model,out_predictions):
     if folder != 'None':
         import sys  
         sys.path.insert(0, folder)
-    import numpy as np
-    from spotlight.cross_validation import random_train_test_split
-    from spotlight.interactions import Interactions
-    from spotlight.evaluation import rmse_score
-    from spotlight.factorization.explicit import ExplicitFactorizationModel 
-    import pandas as pd
-    import pickle
-    
     
     if in_dataset != 'None':
         try:
