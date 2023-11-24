@@ -5,7 +5,7 @@ import json
 app = Flask(__name__)
 app.secret_key = 'your_secret_key'  # Change this to a secure secret key
 
-# Check if the JSON file exists, and create it if it doesn't
+# Check if the JSON file exists, and create it if it doesn't hola
 if not os.path.exists('users.json'):
     with open('users.json', 'w') as user_file:
         json.dump({"users": []}, user_file)
