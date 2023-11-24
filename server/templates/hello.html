@@ -1,11 +1,77 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Hello, World Page</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="static/style.css">
+    <title>Your Web Page</title>
 </head>
 <body>
-    <h1>Hello, World Page</h1>
-    <p>{{ message }}</p>
-    <a href="/">Back to Login</a>
+
+<div class="top-container">
+    <h1>Your Web Page Heading</h1>
+</div>
+
+<div class="center-container">
+    <div class="form-container">
+        <!-- Your login/register form goes here -->
+        <!-- ... -->
+
+        <!-- Table with top 5 recommended movies -->
+        <table>
+            <caption>Top 5 Recommended Movies</caption>
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Genre</th>
+                    <th>Release Year</th>
+                    <th>Rating</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Movie 1</td>
+                    <td>Action</td>
+                    <td>2021</td>
+                    <td>9.0</td>
+                </tr>
+                <tr>
+                    <td>Movie 2</td>
+                    <td>Comedy</td>
+                    <td>2020</td>
+                    <td>8.5</td>
+                </tr>
+                <tr>
+                    <td>Movie 3</td>
+                    <td>Drama</td>
+                    <td>2019</td>
+                    <td>8.7</td>
+                </tr>
+                <tr>
+                    <td>Movie 4</td>
+                    <td>Sci-Fi</td>
+                    <td>2022</td>
+                    <td>9.2</td>
+                </tr>
+                <tr>
+                    <td>Movie 5</td>
+                    <td>Thriller</td>
+                    <td>2018</td>
+                    <td>8.8</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- Modal for registration completion -->
+<div id="myModal" class="modal">
+    <div class="modal-content">
+        <span class="close" id="closeModal">&times;</span>
+        <p id="registration-message"></p>
+    </div>
+</div>
+
+<script src="static/utils.js"></script>
 </body>
 </html>
