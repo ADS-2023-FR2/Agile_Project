@@ -1,10 +1,11 @@
 <!DOCTYPE html>
+<<!DOCTYPE html>
 <html>
 <head>
     <title>Login or Register</title>
     <style>
         body {
-            background-image: url('{{ url_for('static', filename='images/banner.jpg') }}');
+            background-image: url('{{ url_for('serve_image', filename='banner.jpg') }}');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -30,7 +31,7 @@
                     <input type="submit" value="Login">
                 </form>
             </div>
-            
+
         </div>
     </div>
     <!-- Modal dialog -->
