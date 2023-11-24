@@ -8,25 +8,7 @@
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
-        }  
-
-        /* Additional styles for the table */
-        table {
-            width: 80%;
-            margin-top: 20px;
-            border-collapse: collapse;
         }
-
-        th, td {
-            border: 1px solid #ddd;
-            padding: 10px;
-            text-align: left;
-        }
-
-        th {
-            background-color: #f2f2f2;
-        }    
-
     </style>
     <link rel="stylesheet" type="text/css" href="{{ url_for('serve_css', filename='css/style.css') }}">
 </head>
@@ -51,43 +33,6 @@
             
         </div>
     </div>
-
-    <!-- Table with the top five movies here -->
-    <div class="table-container">
-        <h2>Top 5 Movies</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th>Title</th>
-                    <th>Genre</th>
-                </tr>
-            </thead>
-            <tbody>
-                <!-- Replace this with actual data or use Jinja templating to loop through data -->
-                <tr>
-                    <td>Movie 1</td>
-                    <td>Action</td>
-                </tr>
-                <tr>
-                    <td>Movie 2</td>
-                    <td>Drama</td>
-                </tr>
-                <tr>
-                    <td>Movie 3</td>
-                    <td>Comedy</td>
-                </tr>
-                <tr>
-                    <td>Movie 4</td>
-                    <td>Sci-Fi</td>
-                </tr>
-                <tr>
-                    <td>Movie 5</td>
-                    <td>Thriller</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-
     <!-- Modal dialog -->
     <div id="myModal" class="modal">
         <div class="modal-content">
@@ -96,7 +41,7 @@
         </div>
     </div>
 
-    <script src="{{ url_for('serve_js', filename='js/utils.js') }}"></script>
+<script src="{{ url_for('serve_js', filename='js/utils.js') }}"></script>
 
 </body>
 </html>
