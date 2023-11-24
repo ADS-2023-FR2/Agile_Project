@@ -61,7 +61,7 @@ def register():
 
 @app.route('/image/<path:filename>')
 def serve_image(filename):
-    return send_from_directory('images', filename)
+    return send_from_directory('server/images', filename)
 
 @app.route('/static/<path:filename>')
 def serve_js(filename):
