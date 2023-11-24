@@ -5,6 +5,15 @@ import json
 app = Flask(__name__)
 app.secret_key = 'your_secret_key'  # Change this to a secure secret key
 
+# Sample movie data (replace this with your actual recommendation logic)
+top_movies = [
+    {'title': 'Movie 1', 'genre': 'Action'},
+    {'title': 'Movie 2', 'genre': 'Drama'},
+    {'title': 'Movie 3', 'genre': 'Comedy'},
+    {'title': 'Movie 4', 'genre': 'Sci-Fi'},
+    {'title': 'Movie 5', 'genre': 'Thriller'}
+]
+
 # Check if the JSON file exists, and create it if it doesn't
 if not os.path.exists('users.json'):
     with open('users.json', 'w') as user_file:
@@ -69,3 +78,8 @@ def hello():
 # Run the app
 if __name__ == '__main__':
     app.run(debug=True)
+
+@app.route('/', methods=['GET', 'POST'])
+def main_page():
+    # Sample logic: Pass the top 5 recommended movies to the template
+    return render_template('main.html', recommended_movies=top_movies)
