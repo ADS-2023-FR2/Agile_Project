@@ -1,11 +1,197 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Hello, World Page</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="static/style.css">
+    <title>Your Web Page</title>
+
+    <style>
+        /* Add CSS styles for two-column layout */
+        .center-container {
+            display: flex;
+            flex-wrap: wrap; /* Allow containers to wrap to the next line on smaller screens */
+            justify-content: space-between;
+            margin: 20px 0; /* Add margin to create space between elements */
+        }
+
+        .form-container {
+            width: 48%; /* Adjust the width as needed */
+            box-sizing: border-box; /* Include padding and border in width calculation */
+            margin-bottom: 20px; /* Add margin to create space between tables and search bar */
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px; /* Add a small margin at the top of the table for spacing */
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        caption {
+            text-align: left;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        /* Add styles for the search bar */
+        .search-container {
+            width: 100%;
+            box-sizing: border-box;
+            margin-bottom: 20px; /* Add margin to create space between search bar and tables */
+        }
+
+        .search-bar {
+            width: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+    </style>
 </head>
 <body>
-    <h1>Hello, World Page</h1>
-    <p>{{ message }}</p>
-    <a href="/">Back to Login</a>
+
+<div class="top-container">
+    <h1>MovieMagnet</h1>
+</div>
+
+<!-- Search container -->
+<div class="search-container">
+    <p class="recommendation-intro">Search Users</p>
+    <input type="text" class="search-bar" placeholder="Enter user name...">
+    <!-- You can add additional elements related to user search, such as a button or search results -->
+</div>
+
+<div class="center-container">
+    <!-- Left container for recommendations -->
+    <div class="form-container">
+        <p class="recommendation-intro">Top 5 Recommendations</p>
+        <table>
+            <caption>Movies Recommended by Page</caption>
+            <thead>
+                <tr>
+                    <th>Image</th>
+                    <th>Title</th>
+                    <th>Genre</th>
+                    <th>Release Year</th>
+                    <th>Rating</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Synthetic data for the table -->
+                <tr>
+                    <td><img src="static/images/movie1.jpg" alt="Movie 1"></td>
+                    <td>Movie 1</td>
+                    <td>Action</td>
+                    <td>2021</td>
+                    <td>9.0</td>
+                </tr>
+                <tr>
+                    <td><img src="static/images/movie2.jpg" alt="Movie 2"></td>
+                    <td>Movie 2</td>
+                    <td>Action</td>
+                    <td>2021</td>
+                    <td>9.0</td>
+                </tr>
+                <tr>
+                    <td><img src="static/images/movie3.jpg" alt="Movie 3"></td>
+                    <td>Movie 3</td>
+                    <td>Action</td>
+                    <td>2021</td>
+                    <td>9.0</td>
+                </tr>
+                <tr>
+                    <td><img src="static/images/movie4.jpg" alt="Movie 4"></td>
+                    <td>Movie 4</td>
+                    <td>Action</td>
+                    <td>2021</td>
+                    <td>9.0</td>
+                </tr>
+                <tr>
+                    <td><img src="static/images/movie5.jpg" alt="Movie 5"></td>
+                    <td>Movie 5</td>
+                    <td>Action</td>
+                    <td>2021</td>
+                    <td>9.0</td>
+                </tr>
+                <!-- Repeat for other rows -->
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Right container for friend recommendations -->
+    <div class="form-container">
+        <p class="recommendation-intro">Top 5 Recommendations from Friends</p>
+        <table>
+            <caption>Movies Recommended by Friends</caption>
+            <thead>
+                <tr>
+                    <th>Image</th>
+                    <th>Title</th>
+                    <th>Genre</th>
+                    <th>Release Year</th>
+                    <th>Rating</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Synthetic data for the table -->
+                <tr>
+                    <td><img src="static/images/friend_movie1.jpg" alt="Friend Movie 1"></td>
+                    <td>Friend Movie 1</td>
+                    <td>Adventure</td>
+                    <td>2020</td>
+                    <td>8.5</td>
+                </tr>
+                <tr>
+                    <td><img src="static/images/friend_movie2.jpg" alt="Friend Movie 2"></td>
+                    <td>Friend Movie 2</td>
+                    <td>Adventure</td>
+                    <td>2020</td>
+                    <td>8.5</td>
+                </tr>
+                <tr>
+                    <td><img src="static/images/friend_movie3.jpg" alt="Friend Movie 3"></td>
+                    <td>Friend Movie 3</td>
+                    <td>Adventure</td>
+                    <td>2020</td>
+                    <td>8.5</td>
+                </tr>
+                <tr>
+                    <td><img src="static/images/friend_movie4.jpg" alt="Friend Movie 4"></td>
+                    <td>Friend Movie 4</td>
+                    <td>Adventure</td>
+                    <td>2020</td>
+                    <td>8.5</td>
+                </tr>
+                <tr>
+                    <td><img src="static/images/friend_movie5.jpg" alt="Friend Movie 5"></td>
+                    <td>Friend Movie 5</td>
+                    <td>Adventure</td>
+                    <td>2020</td>
+                    <td>8.5</td>
+                </tr>
+                <!-- Repeat for other rows -->
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- Modal for registration completion -->
+<div id="myModal" class="modal">
+    <div class="modal-content">
+        <span class="close" id="closeModal">&times;</span>
+        <p id="registration-message"></p>
+    </div>
+</div>
+
+<script src="static/utils.js"></script>
 </body>
 </html>
