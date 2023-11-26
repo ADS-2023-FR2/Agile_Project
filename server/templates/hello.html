@@ -1,101 +1,107 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="static/style.css">
-    <title>Your Web Page</title>
-
-    <style>
-        /* Add CSS styles for two-column layout */
-        .center-container {
-            display: flex;
-            justify-content: space-between;
-        }
-
-        .form-container {
-            width: 48%; /* Adjust the width as needed */
-        }
-
-        table {
-            width: 100%;
-            margin-top: 20px;
-            border-collapse: collapse;
-        }
-
-        th, td {
-            border: 1px solid #ddd;
-            padding: 8px;
-            text-align: left;
-        }
-
-        th {
-            background-color: #f2f2f2;
-        }
-
-        caption {
-            text-align: left;
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
-    </style>
-</head>
-<body>
-
-<div class="top-container">
-    <h1>MovieMagnet</h1>
+<!-- Left container for recommendations -->
+<div class="form-container">
+    <p class="recommendation-intro">Top 5 Recommendations</p>
+    <table>
+        <caption>Movies Recommended by Page</caption>
+        <thead>
+            <tr>
+                <th>Image</th>
+                <th>Title</th>
+                <th>Genre</th>
+                <th>Release Year</th>
+                <th>Rating</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><img src="static/images/movie1.jpg" alt="Movie 1"></td>
+                <td>Movie 1</td>
+                <td>Action</td>
+                <td>2021</td>
+                <td>9.0</td>
+            </tr>
+            <tr>
+                <td><img src="static/images/movie2.jpg" alt="Movie 2"></td>
+                <td>Movie 2</td>
+                <td>Comedy</td>
+                <td>2020</td>
+                <td>8.5</td>
+            </tr>
+            <tr>
+                <td><img src="static/images/movie3.jpg" alt="Movie 3"></td>
+                <td>Movie 3</td>
+                <td>Drama</td>
+                <td>2019</td>
+                <td>8.7</td>
+            </tr>
+            <tr>
+                <td><img src="static/images/movie4.jpg" alt="Movie 4"></td>
+                <td>Movie 4</td>
+                <td>Sci-Fi</td>
+                <td>2022</td>
+                <td>9.2</td>
+            </tr>
+            <tr>
+                <td><img src="static/images/movie5.jpg" alt="Movie 5"></td>
+                <td>Movie 5</td>
+                <td>Thriller</td>
+                <td>2018</td>
+                <td>8.8</td>
+            </tr>
+        </tbody>
+    </table>
 </div>
 
-<div class="center-container">
-    <!-- Left container for recommendations -->
-    <div class="form-container">
-        <p class="recommendation-intro">Top 5 Recommendations</p>
-        <table>
-            <caption>Movies Recommended by Page</caption>
-            <thead>
-                <tr>
-                    <th>Image</th>
-                    <th>Title</th>
-                    <th>Genre</th>
-                    <th>Release Year</th>
-                    <th>Rating</th>
-                </tr>
-            </thead>
-            <tbody>
-                <!-- Populate with top 5 recommendations from the page -->
-            </tbody>
-        </table>
-    </div>
-
-    <!-- Right container for friend recommendations -->
-    <div class="form-container">
-        <p class="recommendation-intro">Top 5 Recommendations from Friends</p>
-        <table>
-            <caption>Movies Recommended by Friends</caption>
-            <thead>
-                <tr>
-                    <th>Image</th>
-                    <th>Title</th>
-                    <th>Genre</th>
-                    <th>Release Year</th>
-                    <th>Rating</th>
-                </tr>
-            </thead>
-            <tbody>
-                <!-- Populate with top 5 recommendations from friends -->
-            </tbody>
-        </table>
-    </div>
+<!-- Right container for friend recommendations -->
+<div class="form-container">
+    <p class="recommendation-intro">Top 5 Recommendations from Friends</p>
+    <table>
+        <caption>Movies Recommended by Friends</caption>
+        <thead>
+            <tr>
+                <th>Image</th>
+                <th>Title</th>
+                <th>Genre</th>
+                <th>Release Year</th>
+                <th>Rating</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><img src="static/images/friend_movie1.jpg" alt="Friend Movie 1"></td>
+                <td>Friend Movie 1</td>
+                <td>Adventure</td>
+                <td>2020</td>
+                <td>8.5</td>
+            </tr>
+            <tr>
+                <td><img src="static/images/friend_movie2.jpg" alt="Friend Movie 2"></td>
+                <td>Friend Movie 2</td>
+                <td>Comedy</td>
+                <td>2021</td>
+                <td>8.2</td>
+            </tr>
+            <tr>
+                <td><img src="static/images/friend_movie3.jpg" alt="Friend Movie 3"></td>
+                <td>Friend Movie 3</td>
+                <td>Drama</td>
+                <td>2018</td>
+                <td>8.9</td>
+            </tr>
+            <tr>
+                <td><img src="static/images/friend_movie4.jpg" alt="Friend Movie 4"></td>
+                <td>Friend Movie 4</td>
+                <td>Thriller</td>
+                <td>2022</td>
+                <td>9.1</td>
+            </tr>
+            <tr>
+                <td><img src="static/images/friend_movie5.jpg" alt="Friend Movie 5"></td>
+                <td>Friend Movie 5</td>
+                <td>Action</td>
+                <td>2019</td>
+                <td>8.7</td>
+            </tr>
+        </tbody>
+    </table>
 </div>
-
-<!-- Modal for registration completion -->
-<div id="myModal" class="modal">
-    <div class="modal-content">
-        <span class="close" id="closeModal">&times;</span>
-        <p id="registration-message"></p>
-    </div>
-</div>
-
-<script src="static/utils.js"></script>
-</body>
-</html>
