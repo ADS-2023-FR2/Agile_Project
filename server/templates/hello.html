@@ -11,17 +11,16 @@
         .center-container {
             display: flex;
             justify-content: space-between;
-            align-items: flex-start; /* Align items to the start of the flex container */
         }
 
         .form-container {
             width: 48%; /* Adjust the width as needed */
             box-sizing: border-box; /* Include padding and border in width calculation */
+            margin-bottom: 20px; /* Add margin to create space between tables and search bar */
         }
 
         table {
             width: 100%;
-            margin-top: 20px;
             border-collapse: collapse;
         }
 
@@ -50,7 +49,6 @@
         .search-bar {
             width: 100%;
             padding: 10px;
-            margin-top: 20px;
             box-sizing: border-box;
         }
     </style>
@@ -77,13 +75,13 @@
             <!-- ... (your existing table code) -->
         </table>
     </div>
+</div>
 
-    <!-- Search container -->
-    <div class="search-container">
-        <p class="recommendation-intro">Search Users</p>
-        <input type="text" class="search-bar" placeholder="Enter user name...">
-        <!-- You can add additional elements related to user search, such as a button or search results -->
-    </div>
+<!-- Search container -->
+<div class="search-container">
+    <p class="recommendation-intro">Search Users</p>
+    <input type="text" class="search-bar" placeholder="Enter user name...">
+    <!-- You can add additional elements related to user search, such as a button or search results -->
 </div>
 
 <!-- Modal for registration completion -->
