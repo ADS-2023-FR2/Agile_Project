@@ -1,9 +1,10 @@
 
-def get_combined_recommendations(rec1, rec2, n=None, c=0.5):
+from Recommendations_user import get_ratings
+
+def get_recommendations_from_dicts(rec1, rec2, n=None, c=0.5):
     '''
     Given the reccomendations of two users, this function calculates the first n common
     recommendations of movies for both of them, to be seen together. To sort these
-    recommendations, some score is used.
 
     Parameters
     ----------
@@ -57,12 +58,54 @@ def get_combined_recommendations(rec1, rec2, n=None, c=0.5):
     return combined_recs
 
 
-if __name__ == '__main__':
+def get_combined_recommendations(user1_id, user2_id, n=None, c=0.5, all=False):
 
+    rec1, _ = get_ratings(folder='../spotlight',
+                         in_model='../../models/movielens_1M_model.pkl',
+                         in_dataset='../../data/datasets/movielens_1M.csv',
+                         user=user1_id,
+                         out_predictions='None',
+                         top=0)
+
+    rec2, _ = get_ratings(folder='../spotlight',
+                        in_model='../../models/movielens_1M_model.pkl',
+                        in_dataset='../../data/datasets/movielens_1M.csv',
+                        user=user2_id,
+                        out_predictions='None',
+                        top=0)
+
+    comb_rec = get_recommendations_from_dicts(rec1, rec2, n=5, c=0.5)
+
+    if all:
+        return (list(comb_rec.keys()), # Ids of the movies
+               list(comb_rec.values()), # Scores
+               [rec1[movie_id] for movie_id in list(comb_rec.keys())], # Pred. ratings for user 1
+               [rec2[movie_id] for movie_id in list(comb_rec.keys())]) # Pred. ratings for user 2
+    else:
+        return list(comb_rec.keys())
+
+
+
+
+def main1():
     rec1 = {73: 4, 58: 3, 38: 3, 14: 3, 53: 3, 43: 2, 0: 1, 75: 1}
     rec2 = {43: 5, 13: 5, 53: 5, 75: 5, 58: 2, 82: 2, 14: 2, 0: 1}
 
-    comb_rec = get_combined_recommendations(rec1, rec2, n=5)
+    comb_rec = get_recommendations_from_dicts(rec1, rec2, n=5)
 
     print('Ids of common recommendations:', list(comb_rec.keys()))
+
+def main2():
+    ids, scores, rat1, rat2 = get_combined_recommendations(1, 2, all=True)
+
+    print('ids:', ids)
+    print('scores:', scores)
+    print('rat1:', rat1)
+    print('rat2:', rat2)
+
+
+if __name__ == '__main__':
+
+    main2()
+
 

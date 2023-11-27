@@ -4,7 +4,7 @@ import argparse
 import predict_1user
 
 def main():
-    parser = argparse.ArgumentParser(description='REQUIREMENTS: pandas,spotlight,,pickle,sys,numpy')
+    parser = argparse.ArgumentParser(description='REQUIREMENTS: pandas,spotlight,pickle,sys,numpy')
     parser.add_argument('--input', dest = 'input', type = str, help='Path to the folder that contains spotlight',default='None')
     parser.add_argument('--in_model', dest = 'in_model', type = str, help='Input path of the model (binary pkl file',default='None')
     parser.add_argument('--in_dataset', dest = 'in_dataset', type = str, help='Input path of the dataset (csv file)',default='None')
@@ -15,7 +15,7 @@ def main():
     
     get_ratings (args.input,args.in_model,args.in_dataset,args.user,args.out_predictions,args.top)
 
-def get_ratings (folder,in_model,in_dataset,user,out_predictions,top):
+def get_ratings (folder, in_model, in_dataset, user, out_predictions, top):
     
     if folder != 'None':
         import sys  
@@ -29,7 +29,7 @@ def get_ratings (folder,in_model,in_dataset,user,out_predictions,top):
     
     df_no_watched = df_no_watched.drop ('ratings', axis=1) 
     
-    print (df_no_watched)
+    #print (df_no_watched)
     
     if out_predictions != 'None':
         # Guardar el DataFrame en un archivo CSV
@@ -44,7 +44,7 @@ def get_ratings (folder,in_model,in_dataset,user,out_predictions,top):
         out = df_no_watched['item_id'][:top].values
     else:
         out = df_no_watched['item_id'].values
-    print (out)
+    #print (out)
     return dic,out
         
 if __name__ == '__main__':
