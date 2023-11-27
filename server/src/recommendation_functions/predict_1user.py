@@ -2,10 +2,8 @@ import pandas as pd
 import pickle
 import argparse
 
-import sys
-sys.path.append('../')
-from spotlight.interactions import Interactions
-from spotlight.evaluation import rmse_score
+from src.spotlight.interactions import Interactions
+from src.spotlight.evaluation import rmse_score
 
 def main():
     parser = argparse.ArgumentParser(description='REQUIREMENTS: pandas,spotlight,,pickle,sys,numpy')

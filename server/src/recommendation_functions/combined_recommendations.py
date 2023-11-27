@@ -1,5 +1,4 @@
-
-from Recommendations_user import get_ratings
+from src.recommendation_functions.recommendations_user import get_ratings
 
 def get_recommendations_from_dicts(rec1, rec2, n=None, c=0.5):
     '''

@@ -2,9 +2,7 @@ from flask import Flask, render_template, request, redirect, url_for, session, j
 import os
 import json
 
-import sys
-sys.path.append('../src/recommendation_functions')
-from combined_recommendations import get_combined_recommendations
+from src.recommendation_functions import combined_recommendations
 
 
 app = Flask(__name__)
@@ -66,7 +64,7 @@ def register():
 
 @app.route('/image/<path:filename>')
 def serve_image(filename):
-    return send_from_directory('server/images', filename)
+    return send_from_directory('images', filename)
 
 @app.route('/static/<path:filename>')
 def serve_js(filename):
@@ -79,11 +77,6 @@ def serve_css(filename):
 @app.route('/hello', methods=['GET'])
 def hello():
     return render_template('hello.html')
-
-@app.route('/', methods=['GET', 'POST'])
-def main_page():
-    # Sample logic: Pass the top 5 recommended movies to the template
-    return render_template('main.html', recommended_movies=top_movies)
 
 @app.route('/', methods=['GET', 'POST'])
 def combined_recommendations(user1_id, user2_id, n=5, c=0.5):
