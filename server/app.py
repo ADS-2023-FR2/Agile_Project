@@ -2,6 +2,11 @@ from flask import Flask, render_template, request, redirect, url_for, session, j
 import os
 import json
 
+import sys
+sys.path.append('../src/recommendation_functions')
+from combined_recommendations import get_combined_recommendations
+
+
 app = Flask(__name__)
 app.secret_key = 'your_secret_key'  # Change this to a secure secret key
 
@@ -75,11 +80,16 @@ def serve_css(filename):
 def hello():
     return render_template('hello.html')
 
-# Run the app
-if __name__ == '__main__':
-    app.run(debug=True)
-
 @app.route('/', methods=['GET', 'POST'])
 def main_page():
     # Sample logic: Pass the top 5 recommended movies to the template
     return render_template('main.html', recommended_movies=top_movies)
+
+@app.route('/', methods=['GET', 'POST'])
+def combined_recommendations(user1_id, user2_id, n=5, c=0.5):
+    comb_rec = get_combined_recommendations(user1_id, user2_id, n, c)
+    return jsonify({'top_recommendations': comb_rec})
+
+# Run the app
+if __name__ == '__main__':
+    app.run(debug=True)
