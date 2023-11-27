@@ -1,2 +1,4 @@
 .ipynb_checkpoints/
 src/spotlight/__pycache__/
+src/spotlight/datasets/__pycache__/
+src/spotlight/factorization/__pycache__/

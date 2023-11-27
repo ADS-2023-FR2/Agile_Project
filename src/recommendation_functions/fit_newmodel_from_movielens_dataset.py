@@ -23,7 +23,7 @@ def main():
     
     process (args.input,args.variant, args.niter,args.out_model, args.out_dataset,args.out_predictions)
 
-def process(folder, var, niter, out_model, out_dataset,out_predictions):
+def process(folder, var, niter, out_model, out_dataset, out_predictions):
     
     if folder != 'None':
         import sys  
