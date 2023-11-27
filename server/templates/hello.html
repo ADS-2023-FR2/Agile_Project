@@ -1,10 +1,65 @@
+
+
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Hello, World Page</title>
+    <title>Find your friends!!</title>
+    <!-- Add your CSS styles here -->
+    <style>
+        /* Style the search input */
+        #searchInput {
+            padding: 8px;
+            margin: 10px;
+        }
+    </style>
 </head>
 <body>
-    <h1>Hello, World Page</h1>
+    <h1>Find your friends</h1>
+    <div id="searchContainer">
+        <input type="text" id="searchInput" placeholder="Search for a friend...">
+        <ul id="searchResults"></ul>
+    </div>
+    <div id="selectedUser" style="display: none;"></div>
+
+    <script>
+        const searchInput = document.getElementById('searchInput');
+        const searchResults = document.getElementById('searchResults');
+        const selectedUserDiv = document.getElementById('selectedUser');
+        const searchContainer = document.getElementById('searchContainer');
+
+        searchInput.addEventListener('input', () => {
+            const query = searchInput.value.trim();
+
+            fetch(`/search?query=${encodeURIComponent(query)}`)
+                .then(response => response.json())
+                .then(users => {
+                    displaySearchResults(users);
+                })
+                .catch(error => console.error('Error:', error));
+        });
+
+        function displaySearchResults(users) {
+            searchResults.innerHTML = ''; // Clear previous results
+            users.forEach(user => {
+                const li = document.createElement('li');
+                li.textContent = user.username;
+                li.addEventListener('click', () => {
+                    displaySelectedUser(user);
+                });
+                searchResults.appendChild(li);
+            });
+        }
+
+        function displaySelectedUser(user) {
+            searchInput.value = ''; // Clear the search input field
+            searchResults.innerHTML = ''; // Clear the search results
+            searchContainer.style.display = 'block'; // Show search bar
+            selectedUserDiv.style.display = 'block'; // Show selected user info
+            selectedUserDiv.innerHTML = `<p>Selected user: ${user.username}</p>`;
+            // Add more details about the selected user as needed
+        }
+    </script>
+    
     <p>{{ message }}</p>
     <a href="/">Back to Login</a>
 </body>

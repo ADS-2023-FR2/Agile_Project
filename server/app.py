@@ -62,9 +62,36 @@ def serve_js(filename):
 def serve_css(filename):
     return send_from_directory('static', filename)
 
+
+
+# Search and select friends
+# ________________________________________________________________________________
+
+# Sample user database (replace this with your actual user data)
+users = [
+    {"id": 1, "username": "Pol G"},
+    {"id": 2, "username": "Pol R"},
+    {"id": 3, "username": "David"},
+    {"id": 4, "username": "Sergi"},
+    {"id": 5, "username": "Joachim"},
+    {"id": 6, "username": "Vinny"},
+    {"id": 7, "username": "Ana"},
+    {"id": 8, "username": "EloiBestTeacher"}
+    # Add more users here...
+]
+
 @app.route('/hello', methods=['GET'])
 def hello():
     return render_template('hello.html')
+
+@app.route('/search', methods=['GET'])
+def search_users():
+    query = request.args.get('query', '')  # Get search query from request parameters
+    results = []
+    if query:
+        # Simulated search logic (replace with your actual search logic)
+        results = [user for user in users if query.lower() in user['username'].lower()]
+    return jsonify(results)
 
 # Run the app
 if __name__ == '__main__':
