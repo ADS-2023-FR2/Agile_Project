@@ -26,6 +26,7 @@
         const searchResults = document.getElementById('searchResults');
         const selectedUserDiv = document.getElementById('selectedUser');
         const searchContainer = document.getElementById('searchContainer');
+        let selectedUser = null; // Variable to store the selected user
 
         searchInput.addEventListener('input', () => {
             const query = searchInput.value.trim();
@@ -44,6 +45,7 @@
                 const li = document.createElement('li');
                 li.textContent = user.username;
                 li.addEventListener('click', () => {
+                    selectedUser = user; // Store the selected user
                     displaySelectedUser(user);
                 });
                 searchResults.appendChild(li);

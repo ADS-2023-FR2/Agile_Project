@@ -93,6 +93,15 @@ def search_users():
         results = [user for user in users if query.lower() in user['username'].lower()]
     return jsonify(results)
 
+@app.route('/save_selected_user', methods=['POST'])
+def save_selected_user():
+    selected_user = request.get_json()  # Get the selected user data from the request
+    # Process or store the selected user data as needed
+    # For example, you can store it in a database, perform some operations, etc.
+    
+    # Return a response (optional)
+    return jsonify({'message': 'Selected user received successfully'})
+
 # Run the app
 if __name__ == '__main__':
     app.run(debug=True)
