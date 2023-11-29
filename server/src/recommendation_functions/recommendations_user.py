@@ -1,7 +1,7 @@
 import pandas as pd
 import argparse
 
-import predict_1user
+import src.recommendation_functions.predict_1user
 
 def main():
     parser = argparse.ArgumentParser(description='REQUIREMENTS: pandas,spotlight,pickle,sys,numpy')

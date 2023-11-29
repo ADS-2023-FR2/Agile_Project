@@ -55,6 +55,11 @@
             padding: 10px;
             box-sizing: border-box;
         }
+
+        .limited-dimensions {
+            max-width: 100px;
+            max-height: 100px;
+        }
     </style>
 </head>
 <body>
@@ -88,41 +93,70 @@
             <tbody>
                 <!-- Synthetic data for the table -->
                 <tr>
-                    <td><img src="static/images/movie1.jpg" alt="Movie 1"></td>
-                    <td>Movie 1</td>
-                    <td>Action</td>
-                    <td>2021</td>
-                    <td>9.0</td>
+                    {% for record in data %}
+                        {% if record['item_id'] == 186 %}
+                            <td>
+                                <img src="{{ record['image'] }}" alt="{{ record['item_id'] }}" class="limited-dimensions">
+                            </td>
+                            <td>{{ record['Title'] }}</td>
+                            <td>{{ record['Genres'] }}</td>
+                            <td>{{ record['Year'] }}</td>
+                            <td>9.0</td>
+                        {% endif %}
+                    {% endfor %}
                 </tr>
                 <tr>
-                    <td><img src="static/images/movie2.jpg" alt="Movie 2"></td>
-                    <td>Movie 2</td>
-                    <td>Action</td>
-                    <td>2021</td>
-                    <td>9.0</td>
+                    {% for record in data %}
+                        {% if record['item_id'] == 34 %}
+                            <td>
+                                <img src="{{ record['image'] }}" alt="{{ record['item_id'] }}" class="limited-dimensions">
+                            </td>
+                            <td>{{ record['Title'] }}</td>
+                            <td>{{ record['Genres'] }}</td>
+                            <td>{{ record['Year'] }}</td>
+                            <td>9.0</td>
+                    {% endif %}
+                {% endfor %}
                 </tr>
                 <tr>
-                    <td><img src="static/images/movie3.jpg" alt="Movie 3"></td>
-                    <td>Movie 3</td>
-                    <td>Action</td>
-                    <td>2021</td>
-                    <td>9.0</td>
+                    {% for record in data %}
+                        {% if record['item_id'] == 645 %}
+                            <td>
+                                <img src="{{ record['image'] }}" alt="{{ record['item_id'] }}" class="limited-dimensions">
+                            </td>
+                            <td>{{ record['Title'] }}</td>
+                            <td>{{ record['Genres'] }}</td>
+                            <td>{{ record['Year'] }}</td>
+                            <td>9.0</td>
+                    {% endif %}
+                {% endfor %}
                 </tr>
                 <tr>
-                    <td><img src="static/images/movie4.jpg" alt="Movie 4"></td>
-                    <td>Movie 4</td>
-                    <td>Action</td>
-                    <td>2021</td>
-                    <td>9.0</td>
+                    {% for record in data %}
+                        {% if record['item_id'] == 35 %}
+                            <td>
+                                <img src="{{ record['image'] }}" alt="{{ record['item_id'] }}" class="limited-dimensions">
+                            </td>
+                            <td>{{ record['Title'] }}</td>
+                            <td>{{ record['Genres'] }}</td>
+                            <td>{{ record['Year'] }}</td>
+                            <td>9.0</td>
+                {% endif %}
+            {% endfor %}
                 </tr>
                 <tr>
-                    <td><img src="static/images/movie5.jpg" alt="Movie 5"></td>
-                    <td>Movie 5</td>
-                    <td>Action</td>
-                    <td>2021</td>
-                    <td>9.0</td>
+                    {% for record in data %}
+                        {% if record['item_id'] == 45 %}
+                            <td>
+                                <img src="{{ record['image'] }}" alt="{{ record['item_id'] }}" class="limited-dimensions">
+                            </td>
+                            <td>{{ record['Title'] }}</td>
+                            <td>{{ record['Genres'] }}</td>
+                            <td>{{ record['Year'] }}</td>
+                            <td>9.0</td>
+                {% endif %}
+            {% endfor %}
                 </tr>
-                <!-- Repeat for other rows -->
             </tbody>
         </table>
     </div>
@@ -144,41 +178,70 @@
             <tbody>
                 <!-- Synthetic data for the table -->
                 <tr>
-                    <td><img src="static/images/friend_movie1.jpg" alt="Friend Movie 1"></td>
-                    <td>Friend Movie 1</td>
-                    <td>Adventure</td>
-                    <td>2020</td>
-                    <td>8.5</td>
+                    {% for record in data %}
+                        {% if record['item_id'] == 1186 %}
+                            <td>
+                                <img src="{{ record['image'] }}" alt="{{ record['item_id'] }}" class="limited-dimensions">
+                            </td>
+                            <td>{{ record['Title'] }}</td>
+                            <td>{{ record['Genres'] }}</td>
+                            <td>{{ record['Year'] }}</td>
+                            <td>9.0</td>
+                        {% endif %}
+                    {% endfor %}
                 </tr>
                 <tr>
-                    <td><img src="static/images/friend_movie2.jpg" alt="Friend Movie 2"></td>
-                    <td>Friend Movie 2</td>
-                    <td>Adventure</td>
-                    <td>2020</td>
-                    <td>8.5</td>
+                    {% for record in data %}
+                        {% if record['item_id'] == 434 %}
+                            <td>
+                                <img src="{{ record['image'] }}" alt="{{ record['item_id'] }}" class="limited-dimensions">
+                            </td>
+                            <td>{{ record['Title'] }}</td>
+                            <td>{{ record['Genres'] }}</td>
+                            <td>{{ record['Year'] }}</td>
+                            <td>9.0</td>
+                    {% endif %}
+                {% endfor %}
                 </tr>
                 <tr>
-                    <td><img src="static/images/friend_movie3.jpg" alt="Friend Movie 3"></td>
-                    <td>Friend Movie 3</td>
-                    <td>Adventure</td>
-                    <td>2020</td>
-                    <td>8.5</td>
+                    {% for record in data %}
+                        {% if record['item_id'] == 1645 %}
+                            <td>
+                                <img src="{{ record['image'] }}" alt="{{ record['item_id'] }}" class="limited-dimensions">
+                            </td>
+                            <td>{{ record['Title'] }}</td>
+                            <td>{{ record['Genres'] }}</td>
+                            <td>{{ record['Year'] }}</td>
+                            <td>9.0</td>
+                    {% endif %}
+                {% endfor %}
                 </tr>
                 <tr>
-                    <td><img src="static/images/friend_movie4.jpg" alt="Friend Movie 4"></td>
-                    <td>Friend Movie 4</td>
-                    <td>Adventure</td>
-                    <td>2020</td>
-                    <td>8.5</td>
+                    {% for record in data %}
+                        {% if record['item_id'] == 356 %}
+                            <td>
+                                <img src="{{ record['image'] }}" alt="{{ record['item_id'] }}" class="limited-dimensions">
+                            </td>
+                            <td>{{ record['Title'] }}</td>
+                            <td>{{ record['Genres'] }}</td>
+                            <td>{{ record['Year'] }}</td>
+                            <td>9.0</td>
+                {% endif %}
+            {% endfor %}
                 </tr>
                 <tr>
-                    <td><img src="static/images/friend_movie5.jpg" alt="Friend Movie 5"></td>
-                    <td>Friend Movie 5</td>
-                    <td>Adventure</td>
-                    <td>2020</td>
-                    <td>8.5</td>
+                    {% for record in data %}
+                        {% if record['item_id'] == 456 %}
+                            <td>
+                                <img src="{{ record['image'] }}" alt="{{ record['item_id'] }}" class="limited-dimensions">
+                            </td>
+                            <td>{{ record['Title'] }}</td>
+                            <td>{{ record['Genres'] }}</td>
+                            <td>{{ record['Year'] }}</td>
+                            <td>9.0</td>
+                {% endif %}
+            {% endfor %}
                 </tr>
-                <!-- Repeat for other rows -->
             </tbody>
         </table>
     </div>
