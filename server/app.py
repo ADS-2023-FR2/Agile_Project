@@ -66,6 +66,27 @@ def serve_css(filename):
 def hello():
     return render_template('hello.html')
 
+@app.route('/watch_together', methods=['GET'])
+def watch_together():
+    return render_template('watch_together.html')
+
+@app.route('/get_list', methods=['GET'])
+def get_list():
+    # Hier können Sie Ihre tatsächliche Logik zur Generierung der Liste implementieren
+    my_list = ["Item 1", "Item 2", "Item 3", "Item 4", "Item 5"]
+
+    return jsonify(my_list)
+
+@app.route('/combined_recommendations', methods=['GET'])
+def combined_recommendations():
+    user1_id = request.args.get('user1_id')
+    user2_id = request.args.get('user2_id')
+    n = 5
+    c = 0.5
+    comb_rec = get_combined_recommendations(user1_id, user2_id, n, c)
+    #comb_rec = ["Item a", "Item b", "Item c", "Item d", "Item e"]
+    #print(comb_rec)
+    return jsonify({'top_recommendations': comb_rec})
 # Run the app
 if __name__ == '__main__':
     app.run(debug=True)

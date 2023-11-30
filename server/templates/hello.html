@@ -1,11 +1,18 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <title>Hello, World Page</title>
 </head>
 <body>
-    <h1>Hello, World Page</h1>
+    <h1 style="color: black;">Hello, World Page</h1>
     <p>{{ message }}</p>
     <a href="/">Back to Login</a>
+
+    <!-- Link to watch together recodation -->
+    <button class="maneuver-button" onclick="window.location.href='{{ url_for('watch_together') }}'">Watch Together</button>
+
+
+
 </body>
 </html>
