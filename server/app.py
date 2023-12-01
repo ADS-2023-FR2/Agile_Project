@@ -82,9 +82,15 @@ def serve_css(filename):
 def hello():
     return render_template('hello.html', data=df.to_dict(orient='records'))
 
-@app.route('/', methods=['GET', 'POST'])
-def combined_recommendations(user1_id, user2_id, n=5, c=0.5):
+@app.route('/combined_recommendations', methods=['GET', 'POST'])
+def combined_recommendations():
+    user1_id = request.args.get('user1_id')
+    user2_id = request.args.get('user2_id')
+    n = 5
+    c = 0.5
     comb_rec = get_combined_recommendations(user1_id, user2_id, n, c)
+    #comb_rec = ["Item a", "Item b", "Item c", "Item d", "Item e"]
+    #print(comb_rec)
     return jsonify({'top_recommendations': comb_rec})
 
 def load_data_from_csv(csv_file):

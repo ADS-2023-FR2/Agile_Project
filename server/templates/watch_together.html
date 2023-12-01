@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <title>Watch together recommendation</title>
+    
+    
+</head>
+<body>
+    <h1 style="color: black;">Watch together recommendation</h1>
+
+    <button onclick="performAction()">get list</button>
+    <button onclick="request_list()">request list</button>
+
+    <ul id="resultList"></ul>
+    <div id="resultContainer"></div>
+
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+
+
+    <ul class="movie-list"></ul>>
+        <li class="movie-list-item">1. </li>
+        <li class="movie-list-item">2. </li>
+        <li class="movie-list-item">3. </li>
+        <li class="movie-list-item">4. </li>
+        <li class="movie-list-item">5. </li>
+    </ul>
+
+    <p>sample text.</p>
+    <!-- Add aditional context to the server. -->
+    <div class="button-container"></div>
+        <button class="maneuver-button" onclick="window.location.href='{{ url_for('hello') }}'">Back to Mainpage</button>
+        <button class="maneuver-button" onclick="window.location.href='/'">register</button>
+
+</body>
+</html>

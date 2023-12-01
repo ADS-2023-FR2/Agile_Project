@@ -75,3 +75,24 @@ h1 {
     display: inline-block;
     margin-right: 10px;
 }
+
+/* maneuver button styles */
+.maneuver-button {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    border: 2px solid #0065BD;
+    color: #0065BD; 
+    background-color: #fff; 
+    border-radius: 5px; 
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s; 
+}
+
+.maneuver-button:hover {
+    background-color: #0065BD; /* new backgroundcoulor by Hover */
+    color: #fff; /* new leter coulor by Hover */
+}
