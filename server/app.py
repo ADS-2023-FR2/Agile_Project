@@ -3,7 +3,7 @@ import os
 import json
 import pandas as pd
 
-from src.recommendation_functions import combined_recommendations
+from src.recommendation_functions.combined_recommendations import get_combined_recommendations
 
 
 app = Flask(__name__)
@@ -22,12 +22,12 @@ top_movies = [
 df = pd.read_csv(os.path.join(os.path.dirname(__file__), 'images/m1movidata.csv'))
 
 # Check if the JSON file exists, and create it if it doesn't
-if not os.path.exists('server/users.json'):
-    with open('server/users.json', 'w') as user_file:
+if not os.path.exists('users.json'):
+    with open('users.json', 'w') as user_file:
         json.dump({"users": []}, user_file)
 
 # Load user data from the JSON file
-with open('server/users.json', 'r') as user_file:
+with open('users.json', 'r') as user_file:
     user_data = json.load(user_file)
 
 # Define a main route
@@ -61,7 +61,7 @@ def register():
     })
 
     # Save the updated user data to the JSON file
-    with open('server/users.json', 'w') as user_file:
+    with open('users.json', 'w') as user_file:
         json.dump(user_data, user_file, indent=2)
 
     return jsonify({'success': True})
@@ -81,6 +81,15 @@ def serve_css(filename):
 @app.route('/hello', methods=['GET'])
 def hello():
     return render_template('hello.html', data=df.to_dict(orient='records'))
+
+@app.route('/watch_together', methods=['GET'])
+def watch_together():
+    return render_template('watch_together.html')
+
+@app.route('/get_list', methods=['GET'])
+def get_list():
+    # Hier können Sie Ihre tatsächliche Logik zur Generierung der Liste implementieren
+    my_list = ["Item 1", "Item 2", "Item 3", "Item 4", "Item 5"]
 
 @app.route('/combined_recommendations', methods=['GET', 'POST'])
 def combined_recommendations():
