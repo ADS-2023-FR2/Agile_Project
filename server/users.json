@@ -1,0 +1,20 @@
+{
+  "users": [
+    {
+      "username": "bb",
+      "password": "bb"
+    },
+    {
+      "username": "bb",
+      "password": "bb"
+    },
+    {
+      "username": "cc",
+      "password": "cc"
+    },
+    {
+      "username": "cc",
+      "password": "cc"
+    }
+  ]
+}

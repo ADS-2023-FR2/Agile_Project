@@ -1,7 +1,7 @@
 import pandas as pd
 import argparse
 
-import src.recommendation_functions.predict_1user
+from src.recommendation_functions import predict_1user
 
 def main():
     parser = argparse.ArgumentParser(description='REQUIREMENTS: pandas,spotlight,pickle,sys,numpy')
@@ -10,12 +10,12 @@ def main():
     parser.add_argument('--in_dataset', dest = 'in_dataset', type = str, help='Input path of the dataset (csv file)',default='None')
     parser.add_argument('--user',dest='user', type=int, help='user that we are going to predict their ratings')
     parser.add_argument('--out_predictions', dest = 'out_predictions', type = str, help='Output path of the predictions (csv file)',default='None')
-    parser.add_argument('--top', dest='top', type=int, help='Top recommendations that want to be shown',default=0)
+    parser.add_argument('--top', dest='top', type=int, help='Top recommendations that want to be shown',default=5)
     args = parser.parse_args()
     
     get_ratings (args.input,args.in_model,args.in_dataset,args.user,args.out_predictions,args.top)
 
-def get_ratings (folder, in_model, in_dataset, user, out_predictions, top):
+def get_ratings (folder, in_model = "None", in_dataset = "None", user = 1, out_predictions= "None", top = 5):
     
     if folder != 'None':
         import sys  
