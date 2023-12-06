@@ -1,7 +1,14 @@
 from flask import Flask, render_template, request, redirect, url_for, session, jsonify, send_from_directory
 import os
 import json
+import pandas as pd
 
+<<<<<<< HEAD
+=======
+from src.recommendation_functions import combined_recommendations
+
+
+>>>>>>> origin
 app = Flask(__name__)
 app.secret_key = 'your_secret_key'  # Change this to a secure secret key
 
@@ -14,13 +21,16 @@ top_movies = [
     {'title': 'Movie 5', 'genre': 'Thriller'}
 ]
 
+# Read the CSV file using a relative path
+df = pd.read_csv(os.path.join(os.path.dirname(__file__), 'images/m1movidata.csv'))
+
 # Check if the JSON file exists, and create it if it doesn't
-if not os.path.exists('users.json'):
-    with open('users.json', 'w') as user_file:
+if not os.path.exists('server/users.json'):
+    with open('server/users.json', 'w') as user_file:
         json.dump({"users": []}, user_file)
 
 # Load user data from the JSON file
-with open('users.json', 'r') as user_file:
+with open('server/users.json', 'r') as user_file:
     user_data = json.load(user_file)
 
 # Define a main route
@@ -54,14 +64,14 @@ def register():
     })
 
     # Save the updated user data to the JSON file
-    with open('users.json', 'w') as user_file:
+    with open('server/users.json', 'w') as user_file:
         json.dump(user_data, user_file, indent=2)
 
     return jsonify({'success': True})
 
 @app.route('/image/<path:filename>')
 def serve_image(filename):
-    return send_from_directory('server/images', filename)
+    return send_from_directory('images', filename)
 
 @app.route('/static/<path:filename>')
 def serve_js(filename):
@@ -73,7 +83,24 @@ def serve_css(filename):
 
 @app.route('/hello', methods=['GET'])
 def hello():
+<<<<<<< HEAD
     return render_template('hello.html')
+=======
+    return render_template('hello.html', data=df.to_dict(orient='records'))
+
+@app.route('/', methods=['GET', 'POST'])
+def combined_recommendations(user1_id, user2_id, n=5, c=0.5):
+    comb_rec = get_combined_recommendations(user1_id, user2_id, n, c)
+    return jsonify({'top_recommendations': comb_rec})
+
+def load_data_from_csv(csv_file):
+    data = {}
+    with open(csv_file, 'r') as file:
+        for line in file:
+            id, link = line.strip().split(',')
+            data[id] = link
+    return data
+>>>>>>> origin
 
 # Run the app
 if __name__ == '__main__':
