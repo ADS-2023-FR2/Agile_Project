@@ -3,12 +3,9 @@ import os
 import json
 import pandas as pd
 
-<<<<<<< HEAD
-=======
 from src.recommendation_functions import combined_recommendations
 
 
->>>>>>> origin
 app = Flask(__name__)
 app.secret_key = 'your_secret_key'  # Change this to a secure secret key
 
@@ -83,9 +80,6 @@ def serve_css(filename):
 
 @app.route('/hello', methods=['GET'])
 def hello():
-<<<<<<< HEAD
-    return render_template('hello.html')
-=======
     return render_template('hello.html', data=df.to_dict(orient='records'))
 
 @app.route('/', methods=['GET', 'POST'])
@@ -100,13 +94,7 @@ def load_data_from_csv(csv_file):
             id, link = line.strip().split(',')
             data[id] = link
     return data
->>>>>>> origin
 
 # Run the app
 if __name__ == '__main__':
     app.run(debug=True)
-
-@app.route('/', methods=['GET', 'POST'])
-def main_page():
-    # Sample logic: Pass the top 5 recommended movies to the template
-    return render_template('main.html', recommended_movies=top_movies)
