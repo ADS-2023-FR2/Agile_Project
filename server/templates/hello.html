@@ -1,11 +1,261 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Hello, World Page</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="static/style.css">
+    <title>Your Web Page</title>
+
+    <style>
+        /* Add CSS styles for two-column layout */
+        .center-container {
+            display: flex;
+            flex-wrap: wrap; /* Allow containers to wrap to the next line on smaller screens */
+            justify-content: space-between;
+            margin: 20px 0; /* Add margin to create space between elements */
+        }
+
+        .form-container {
+            width: 48%; /* Adjust the width as needed */
+            box-sizing: border-box; /* Include padding and border in width calculation */
+            margin-bottom: 20px; /* Add margin to create space between tables and search bar */
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px; /* Add a small margin at the top of the table for spacing */
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        caption {
+            text-align: left;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        /* Add styles for the search bar */
+        .search-container {
+            width: 100%;
+            box-sizing: border-box;
+            margin-bottom: 20px; /* Add margin to create space between search bar and tables */
+        }
+
+        .search-bar {
+            width: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+
+        .limited-dimensions {
+            max-width: 100px;
+            max-height: 100px;
+        }
+    </style>
 </head>
 <body>
-    <h1>Hello, World Page</h1>
-    <p>{{ message }}</p>
-    <a href="/">Back to Login</a>
+
+<div class="top-container">
+    <h1>MovieMagnet</h1>
+</div>
+
+<!-- Search container -->
+<div class="search-container">
+    <p class="recommendation-intro">Search Users</p>
+    <input type="text" class="search-bar" placeholder="Enter user name...">
+    <!-- You can add additional elements related to user search, such as a button or search results -->
+</div>
+
+<div class="center-container">
+    <!-- Left container for recommendations -->
+    <div class="form-container">
+        <p class="recommendation-intro">Top 5 Recommendations</p>
+        <table>
+            <caption>Movies Recommended by Page</caption>
+            <thead>
+                <tr>
+                    <th>Image</th>
+                    <th>Title</th>
+                    <th>Genre</th>
+                    <th>Release Year</th>
+                    <th>Rating</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Synthetic data for the table -->
+                <tr>
+                    {% for record in data %}
+                        {% if record['item_id'] == top5[0] %}
+                            <td>
+                                <img src="{{ record['image'] }}" alt="{{ record['item_id'] }}" class="limited-dimensions">
+                            </td>
+                            <td>{{ record['Title'] }}</td>
+                            <td>{{ record['Genres'] }}</td>
+                            <td>{{ record['Year'] }}</td>
+                            <td>9.0</td>
+                        {% endif %}
+                    {% endfor %}
+                </tr>
+                <tr>
+                    {% for record in data %}
+                        {% if record['item_id'] == top5[1] %}
+                            <td>
+                                <img src="{{ record['image'] }}" alt="{{ record['item_id'] }}" class="limited-dimensions">
+                            </td>
+                            <td>{{ record['Title'] }}</td>
+                            <td>{{ record['Genres'] }}</td>
+                            <td>{{ record['Year'] }}</td>
+                            <td>9.0</td>
+                    {% endif %}
+                {% endfor %}
+                </tr>
+                <tr>
+                    {% for record in data %}
+                        {% if record['item_id'] == top5[2] %}
+                            <td>
+                                <img src="{{ record['image'] }}" alt="{{ record['item_id'] }}" class="limited-dimensions">
+                            </td>
+                            <td>{{ record['Title'] }}</td>
+                            <td>{{ record['Genres'] }}</td>
+                            <td>{{ record['Year'] }}</td>
+                            <td>9.0</td>
+                    {% endif %}
+                {% endfor %}
+                </tr>
+                <tr>
+                    {% for record in data %}
+                        {% if record['item_id'] == top5[3] %}
+                            <td>
+                                <img src="{{ record['image'] }}" alt="{{ record['item_id'] }}" class="limited-dimensions">
+                            </td>
+                            <td>{{ record['Title'] }}</td>
+                            <td>{{ record['Genres'] }}</td>
+                            <td>{{ record['Year'] }}</td>
+                            <td>9.0</td>
+                {% endif %}
+            {% endfor %}
+                </tr>
+                <tr>
+                    {% for record in data %}
+                        {% if record['item_id'] == top5[4] %}
+                            <td>
+                                <img src="{{ record['image'] }}" alt="{{ record['item_id'] }}" class="limited-dimensions">
+                            </td>
+                            <td>{{ record['Title'] }}</td>
+                            <td>{{ record['Genres'] }}</td>
+                            <td>{{ record['Year'] }}</td>
+                            <td>9.0</td>
+                {% endif %}
+            {% endfor %}
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Right container for friend recommendations -->
+    <div class="form-container">
+        <p class="recommendation-intro">Top 5 Recommendations from Friends</p>
+        <table>
+            <caption>Movies Recommended by Friends</caption>
+            <thead>
+                <tr>
+                    <th>Image</th>
+                    <th>Title</th>
+                    <th>Genre</th>
+                    <th>Release Year</th>
+                    <th>Rating</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Synthetic data for the table -->
+                <tr>
+                    {% for record in data %}
+                        {% if record['item_id'] == 1000 %}
+                            <td>
+                                <img src="{{ record['image'] }}" alt="{{ record['item_id'] }}" class="limited-dimensions">
+                            </td>
+                            <td>{{ record['Title'] }}</td>
+                            <td>{{ record['Genres'] }}</td>
+                            <td>{{ record['Year'] }}</td>
+                            <td>9.0</td>
+                        {% endif %}
+                    {% endfor %}
+                </tr>
+                <tr>
+                    {% for record in data %}
+                        {% if record['item_id'] == 434 %}
+                            <td>
+                                <img src="{{ record['image'] }}" alt="{{ record['item_id'] }}" class="limited-dimensions">
+                            </td>
+                            <td>{{ record['Title'] }}</td>
+                            <td>{{ record['Genres'] }}</td>
+                            <td>{{ record['Year'] }}</td>
+                            <td>9.0</td>
+                    {% endif %}
+                {% endfor %}
+                </tr>
+                <tr>
+                    {% for record in data %}
+                        {% if record['item_id'] == 1645 %}
+                            <td>
+                                <img src="{{ record['image'] }}" alt="{{ record['item_id'] }}" class="limited-dimensions">
+                            </td>
+                            <td>{{ record['Title'] }}</td>
+                            <td>{{ record['Genres'] }}</td>
+                            <td>{{ record['Year'] }}</td>
+                            <td>9.0</td>
+                    {% endif %}
+                {% endfor %}
+                </tr>
+                <tr>
+                    {% for record in data %}
+                        {% if record['item_id'] == 356 %}
+                            <td>
+                                <img src="{{ record['image'] }}" alt="{{ record['item_id'] }}" class="limited-dimensions">
+                            </td>
+                            <td>{{ record['Title'] }}</td>
+                            <td>{{ record['Genres'] }}</td>
+                            <td>{{ record['Year'] }}</td>
+                            <td>9.0</td>
+                {% endif %}
+            {% endfor %}
+                </tr>
+                <tr>
+                    {% for record in data %}
+                        {% if record['item_id'] == 456 %}
+                            <td>
+                                <img src="{{ record['image'] }}" alt="{{ record['item_id'] }}" class="limited-dimensions">
+                            </td>
+                            <td>{{ record['Title'] }}</td>
+                            <td>{{ record['Genres'] }}</td>
+                            <td>{{ record['Year'] }}</td>
+                            <td>9.0</td>
+                {% endif %}
+            {% endfor %}
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- Modal for registration completion -->
+<div id="myModal" class="modal">
+    <div class="modal-content">
+        <span class="close" id="closeModal">&times;</span>
+        <p id="registration-message"></p>
+    </div>
+</div>
+
+<script src="static/utils.js"></script>
 </body>
 </html>
+
