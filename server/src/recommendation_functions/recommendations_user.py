@@ -1,7 +1,14 @@
 import pandas as pd
 import argparse
 
-import src.recommendation_functions.predict_1user
+import os
+import sys
+
+current_script_directory = os.path.dirname(os.path.abspath(__file__))
+module_directory = os.path.join(current_script_directory, '.')
+sys.path.append(module_directory)
+
+import predict_1user
 
 def main():
     parser = argparse.ArgumentParser(description='REQUIREMENTS: pandas,spotlight,pickle,sys,numpy')

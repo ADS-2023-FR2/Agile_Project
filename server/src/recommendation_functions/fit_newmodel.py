@@ -3,12 +3,17 @@ import pandas as pd
 import pickle
 import argparse
 
+import os
 import sys
-sys.path.append('../')
-from spotlight.cross_validation import random_train_test_split
-from spotlight.interactions import Interactions
-from spotlight.evaluation import rmse_score
-from spotlight.factorization.explicit import ExplicitFactorizationModel 
+
+current_script_directory = os.path.dirname(os.path.abspath(__file__))
+module_directory = os.path.join(current_script_directory, '..', 'splotlight')
+sys.path.append(module_directory)
+
+from cross_validation import random_train_test_split
+from datasets.movielens import get_movielens_dataset
+from evaluation import rmse_score
+from factorization.explicit import ExplicitFactorizationModel
 
 def main():
     parser = argparse.ArgumentParser(description='REQUIREMENTS: pandas,spotlight,,pickle,sys')

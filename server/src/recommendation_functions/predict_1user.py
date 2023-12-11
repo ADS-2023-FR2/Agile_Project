@@ -2,8 +2,15 @@ import pandas as pd
 import pickle
 import argparse
 
-from src.spotlight.interactions import Interactions
-from src.spotlight.evaluation import rmse_score
+import os
+import sys
+
+current_script_directory = os.path.dirname(os.path.abspath(__file__))
+module_directory = os.path.join(current_script_directory, '..', 'splotlight')
+sys.path.append(module_directory)
+
+from interactions import Interactions
+from evaluation import rmse_score
 
 def main():
     parser = argparse.ArgumentParser(description='REQUIREMENTS: pandas,spotlight,,pickle,sys,numpy')
