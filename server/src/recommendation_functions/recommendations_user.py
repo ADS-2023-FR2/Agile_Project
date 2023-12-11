@@ -1,7 +1,8 @@
 import pandas as pd
 import argparse
+import os
 
-import src.recommendation_functions.predict_1user
+from src.recommendation_functions import predict_1user
 
 def main():
     parser = argparse.ArgumentParser(description='REQUIREMENTS: pandas,spotlight,pickle,sys,numpy')
@@ -15,8 +16,11 @@ def main():
     
     get_ratings (args.input,args.in_model,args.in_dataset,args.user,args.out_predictions,args.top)
 
-def get_ratings (folder, in_model, in_dataset, user, out_predictions, top):
+def get_ratings (folder=os.path.join(os.path.dirname(__file__).replace('recommendation_functions','spotlight')), in_model=os.path.join(os.path.dirname(__file__).replace('src','').replace('recommendation_functions','').replace('server','models')[:-1], 'movielens_1M_model.pkl'), in_dataset=os.path.join(os.path.dirname(__file__).replace('src','').replace('recommendation_functions','').replace('server','data')[:-1], 'datasets/movielens_1M.csv'), user=1, out_predictions='None', top=5):
     
+    print (in_model)
+    print (in_dataset)
+
     if folder != 'None':
         import sys  
         sys.path.insert(0, folder)
