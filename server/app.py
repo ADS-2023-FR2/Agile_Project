@@ -22,12 +22,12 @@ top_movies = [
 df = pd.read_csv(os.path.join(os.path.dirname(__file__), 'images/m1movidata.csv'))
 
 # Check if the JSON file exists, and create it if it doesn't
-if not os.path.exists('server/users.json'):
-    with open('server/users.json', 'w') as user_file:
+if not os.path.exists('users.json'):
+    with open('users.json', 'w') as user_file:
         json.dump({"users": []}, user_file)
 
 # Load user data from the JSON file
-with open('server/users.json', 'r') as user_file:
+with open('users.json', 'r') as user_file:
     user_data = json.load(user_file)
 
 # Define a main route
