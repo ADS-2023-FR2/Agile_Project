@@ -93,69 +93,69 @@
             <tbody>
                 <!-- Synthetic data for the table -->
                 <tr>
-                    {% for record in data %}
-                        {% if record['item_id'] == 186 %}
+                    {% for i in range(data.shape[0]) %}
+                        {% if data['item_id'][i] == top5[0] %}
                             <td>
-                                <img src="{{ record['image'] }}" alt="{{ record['item_id'] }}" class="limited-dimensions">
+                                <img src="{{ data['image'][i] }}" alt="{{ data['item_id'][i] }}" class="limited-dimensions">
                             </td>
-                            <td>{{ record['Title'] }}</td>
-                            <td>{{ record['Genres'] }}</td>
-                            <td>{{ record['Year'] }}</td>
-                            <td>9.0</td>
+                            <td>{{ data['Title'][i] }}</td>
+                            <td>{{ data['Genres'][i] }}</td>
+                            <td>{{ data['Year'][i] }}</td>
+                            <td>{{avg[data['item_id'][i]]}}</td>
                         {% endif %}
                     {% endfor %}
                 </tr>
                 <tr>
-                    {% for record in data %}
-                        {% if record['item_id'] == 34 %}
+                    {% for i in range(data.shape[0]) %}
+                        {% if data['item_id'][i] == top5[1] %}
                             <td>
-                                <img src="{{ record['image'] }}" alt="{{ record['item_id'] }}" class="limited-dimensions">
+                                <img src="{{ data['image'][i] }}" alt="{{ data['item_id'][i] }}" class="limited-dimensions">
                             </td>
-                            <td>{{ record['Title'] }}</td>
-                            <td>{{ record['Genres'] }}</td>
-                            <td>{{ record['Year'] }}</td>
-                            <td>9.0</td>
-                    {% endif %}
-                {% endfor %}
+                            <td>{{ data['Title'][i] }}</td>
+                            <td>{{ data['Genres'][i] }}</td>
+                            <td>{{ data['Year'][i] }}</td>
+                            <td>{{avg[data['item_id'][i]]}}</td>
+                        {% endif %}
+                    {% endfor %}
                 </tr>
                 <tr>
-                    {% for record in data %}
-                        {% if record['item_id'] == 645 %}
+                    {% for i in range(data.shape[0]) %}
+                        {% if data['item_id'][i] == top5[2] %}
                             <td>
-                                <img src="{{ record['image'] }}" alt="{{ record['item_id'] }}" class="limited-dimensions">
+                                <img src="{{ data['image'][i] }}" alt="{{ data['item_id'][i] }}" class="limited-dimensions">
                             </td>
-                            <td>{{ record['Title'] }}</td>
-                            <td>{{ record['Genres'] }}</td>
-                            <td>{{ record['Year'] }}</td>
-                            <td>9.0</td>
-                    {% endif %}
-                {% endfor %}
+                            <td>{{ data['Title'][i] }}</td>
+                            <td>{{ data['Genres'][i] }}</td>
+                            <td>{{ data['Year'][i] }}</td>
+                            <td>{{avg[data['item_id'][i]]}}</td>
+                        {% endif %}
+                    {% endfor %}
                 </tr>
                 <tr>
-                    {% for record in data %}
-                        {% if record['item_id'] == 35 %}
+                    {% for i in range(data.shape[0]) %}
+                        {% if data['item_id'][i] == top5[3] %}
                             <td>
-                                <img src="{{ record['image'] }}" alt="{{ record['item_id'] }}" class="limited-dimensions">
+                                <img src="{{ data['image'][i] }}" alt="{{ data['item_id'][i] }}" class="limited-dimensions">
                             </td>
-                            <td>{{ record['Title'] }}</td>
-                            <td>{{ record['Genres'] }}</td>
-                            <td>{{ record['Year'] }}</td>
-                            <td>9.0</td>
-                {% endif %}
-            {% endfor %}
+                            <td>{{ data['Title'][i] }}</td>
+                            <td>{{ data['Genres'][i] }}</td>
+                            <td>{{ data['Year'][i] }}</td>
+                            <td>{{avg[data['item_id'][i]]}}</td>
+                        {% endif %}
+                    {% endfor %}
                 </tr>
                 <tr>
-                    {% for record in data %}
-                        {% if record['item_id'] == 45 %}
+                    {% for i in range(data.shape[0]) %}
+                        {% if data['item_id'][i] == top5[4] %}
                             <td>
-                                <img src="{{ record['image'] }}" alt="{{ record['item_id'] }}" class="limited-dimensions">
+                                <img src="{{ data['image'][i] }}" alt="{{ data['item_id'][i] }}" class="limited-dimensions">
                             </td>
-                            <td>{{ record['Title'] }}</td>
-                            <td>{{ record['Genres'] }}</td>
-                            <td>{{ record['Year'] }}</td>
-                            <td>9.0</td>
-                {% endif %}
-            {% endfor %}
+                            <td>{{ data['Title'][i] }}</td>
+                            <td>{{ data['Genres'][i] }}</td>
+                            <td>{{ data['Year'][i] }}</td>
+                            <td>{{avg[data['item_id'][i]]}}</td>
+                        {% endif %}
+                    {% endfor %}
                 </tr>
             </tbody>
         </table>
@@ -179,7 +179,7 @@
                 <!-- Synthetic data for the table -->
                 <tr>
                     {% for record in data %}
-                        {% if record['item_id'] == 1186 %}
+                        {% if record['item_id'] == 1000 %}
                             <td>
                                 <img src="{{ record['image'] }}" alt="{{ record['item_id'] }}" class="limited-dimensions">
                             </td>
