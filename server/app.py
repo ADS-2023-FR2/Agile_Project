@@ -105,7 +105,7 @@ def test():
     #n = 5
     #c = 0.5
     #comb_rec = get_combined_recommendations(user1_id, user2_id, n, c)
-    comb_rec = [1,2,3,4,5]
+    comb_rec = [101,102,103,104,105]
     #print('Hello world')
     print(comb_rec)
     return jsonify(comb_rec)
