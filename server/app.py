@@ -80,16 +80,41 @@ def serve_css(filename):
 
 @app.route('/hello', methods=['GET'])
 def hello():
-    return render_template('hello.html', data=df.to_dict(orient='records'))
+    print("hello wurde aufgerufen")
+    updated_array_str = request.args.get('updatedArray', None)
+    hidden_integer_array = json.loads(updated_array_str) if updated_array_str else [11, 20, 30, 40, 50, 11, 20, 30, 40, 50]
+    print("übergabe"+ str(hidden_integer_array))
+    return render_template('hello.html', data=df.to_dict(orient='records'), hiddenIntegerArray=hidden_integer_array)
 
 @app.route('/watch_together', methods=['GET'])
 def watch_together():
+    print('Hello world')
     return render_template('watch_together.html')
 
 @app.route('/get_list', methods=['GET'])
 def get_list():
     # Hier können Sie Ihre tatsächliche Logik zur Generierung der Liste implementieren
+    print('Hello world')
     my_list = ["Item 1", "Item 2", "Item 3", "Item 4", "Item 5"]
+    return jsonify({'top_recommendations': my_list})
+
+@app.route('/test', methods=['GET', 'POST'])
+def test():
+    #user1_id = request.args.get('user1_id')
+    #user2_id = request.args.get('user2_id')
+    #n = 5
+    #c = 0.5
+    #comb_rec = get_combined_recommendations(user1_id, user2_id, n, c)
+    comb_rec = [1,2,3,4,5]
+    #print('Hello world')
+    print(comb_rec)
+    return jsonify(comb_rec)
+
+@app.route('/update_array', methods=['POST'])
+def update_array():
+    updated_array = request.json.get('updatedArray', [])
+    print("updated_array" + str(updated_array))
+    return 'OK'
 
 @app.route('/combined_recommendations', methods=['GET', 'POST'])
 def combined_recommendations():
@@ -97,9 +122,9 @@ def combined_recommendations():
     user2_id = request.args.get('user2_id')
     n = 5
     c = 0.5
-    comb_rec = get_combined_recommendations(user1_id, user2_id, n, c)
-    #comb_rec = ["Item a", "Item b", "Item c", "Item d", "Item e"]
-    #print(comb_rec)
+    #comb_rec = get_combined_recommendations(user1_id, user2_id, n, c)
+    comb_rec = ["Item a", "Item b", "Item c", "Item d", "Item e"]
+    print(comb_rec)
     return jsonify({'top_recommendations': comb_rec})
 
 def load_data_from_csv(csv_file):
@@ -109,6 +134,7 @@ def load_data_from_csv(csv_file):
             id, link = line.strip().split(',')
             data[id] = link
     return data
+
 
 # Run the app
 if __name__ == '__main__':
