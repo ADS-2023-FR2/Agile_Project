@@ -25,25 +25,24 @@ function getDataFromTest() {
 //combined_recomendations = [21,22,23,24,25]
 
 document.addEventListener('DOMContentLoaded', function() {
-    // Eventlistener für den Button hinzufügen
-    var updateArrayButton = document.getElementById('updateArrayButton');
 
-    if (updateArrayButton) { // Überprüfen, ob das Element existiert
-        //console.log("Hello World");
-        updateArrayButton.addEventListener('click', function() {
-            // Hier kannst du die Variable aktualisieren
+    var searchForm = document.getElementById('searchForm');
+    if (searchForm)  { // Überprüfen, ob das Element existiert
+        searchForm.addEventListener('submit', function(event) {
+            event.preventDefault(); // Verhindert das standardmäßige Absenden des Formulars
+
             var h1 = document.getElementById('hiddenIntegerArray');
-
-        
-            // Ihr Code hier, z.B. Funktionsaufruf
-            //getDataFromTest().then(combinedRecommendations => {
-                //console.log('Combined Recommendations:', combinedRecommendations);
-                //updateList(combinedRecommendations);
-            combined_Recomendations = [];
             var h2;
-            fetch('/test', {
-                method: 'GET',
-            })
+            var user1_id = 1;
+            var user2_id;
+            user2_id = user2_id = parseInt(searchForm.querySelector('.search-bar').value, 10);
+        
+            console.log('User2 ID:', user2_id);
+
+
+        fetch('/test?user1_id=' + user1_id + '&user2_id=' + user2_id, {
+            method: 'GET',
+        })
             .then(response => {
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
@@ -88,11 +87,8 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
         
-
-
-        
-        
-    } else {
-        console.error('Element with id "updateArrayButton" not found.');
+    }else {
+        console.error('Element with id "searchForm" not found.');
     }
-});
+       
+}); 

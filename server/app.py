@@ -86,10 +86,6 @@ def hello():
     print("übergabe"+ str(hidden_integer_array))
     return render_template('hello.html', data=df.to_dict(orient='records'), hiddenIntegerArray=hidden_integer_array)
 
-@app.route('/watch_together', methods=['GET'])
-def watch_together():
-    print('Hello world')
-    return render_template('watch_together.html')
 
 @app.route('/get_list', methods=['GET'])
 def get_list():
@@ -100,14 +96,14 @@ def get_list():
 
 @app.route('/test', methods=['GET', 'POST'])
 def test():
-    #user1_id = request.args.get('user1_id')
-    #user2_id = request.args.get('user2_id')
-    #n = 5
-    #c = 0.5
+    user1_id = request.args.get('user1_id')
+    user2_id = request.args.get('user2_id')
+    n = 5
+    c = 0.5
     #comb_rec = get_combined_recommendations(user1_id, user2_id, n, c)
     comb_rec = [101,102,103,104,105]
-    #print('Hello world')
-    print(comb_rec)
+    print("userids: " + str(user1_id) + " / " +str(user2_id))
+    print(user2_id)
     return jsonify(comb_rec)
 
 @app.route('/update_array', methods=['POST'])
@@ -116,7 +112,7 @@ def update_array():
     print("updated_array" + str(updated_array))
     return 'OK'
 
-@app.route('/combined_recommendations', methods=['GET', 'POST'])
+@app.route('/combined_recommendations', methods=['GET'])
 def combined_recommendations():
     user1_id = request.args.get('user1_id')
     user2_id = request.args.get('user2_id')
