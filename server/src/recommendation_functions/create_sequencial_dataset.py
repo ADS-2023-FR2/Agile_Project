@@ -1,9 +1,14 @@
 import pandas as pd
 import argparse
 
+import os
 import sys
-sys.path.append('../')
-from spotlight.datasets.synthetic import generate_sequential
+
+current_script_directory = os.path.dirname(os.path.abspath(__file__))
+module_directory = os.path.join(current_script_directory, '..', 'spotlight')
+sys.path.append(module_directory)
+
+from datasets.synthetic import generate_sequential
 
 def main():
     parser = argparse.ArgumentParser(description='REQUIREMENTS: pandas,spotlight,sys')

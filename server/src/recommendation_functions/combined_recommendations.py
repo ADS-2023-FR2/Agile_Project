@@ -1,4 +1,11 @@
-from src.recommendation_functions.recommendations_user import get_ratings
+import os
+import sys
+
+current_script_directory = os.path.dirname(os.path.abspath(__file__))
+module_directory = os.path.join(current_script_directory, '.')
+sys.path.append(module_directory)
+
+from recommendations_user import get_ratings
 
 def get_recommendations_from_dicts(rec1, rec2, n=None, c=0.5):
     '''
