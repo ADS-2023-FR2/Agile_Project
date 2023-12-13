@@ -68,12 +68,15 @@ def process(folder,in_model,in_dataset,user,out_predictions):
     df_user = df_user[df_user['ratings']==0]
     
     with open(in_model, 'rb') as f:
+        '''
         try:
             model = pickle.load(f)
             print ('Modelo importado')
         except:
             print ('No se ha obtenido el modelo')
             exit()
+        '''
+        model = pickle.load(f)
             
     interactions_user = Interactions(user_ids=df_user['user_id'].values,
                                      item_ids=df_user['item_id'].values,
