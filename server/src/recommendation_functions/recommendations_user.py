@@ -10,6 +10,13 @@ sys.path.append(module_directory)
 
 import predict_1user
 
+current_script_directory = os.path.dirname(os.path.abspath(__file__))
+module_directory = os.path.join(current_script_directory, '..')
+sys.path.append(module_directory)
+
+import spotlight
+
+
 def main():
     parser = argparse.ArgumentParser(description='REQUIREMENTS: pandas,spotlight,pickle,sys,numpy')
     parser.add_argument('--input', dest = 'input', type = str, help='Path to the folder that contains spotlight',default='None')
@@ -22,8 +29,9 @@ def main():
     
     get_ratings (args.input,args.in_model,args.in_dataset,args.user,args.out_predictions,args.top)
 
-def get_ratings (folder, in_model, in_dataset, user, out_predictions, top):
-    
+#def get_ratings (folder=current_script_directory+'/../spotlight', in_model=current_script_directory+'/../../models/movielens_1M_model.pkl', in_dataset=current_script_directory+'/../../data/datasets/movielens_1M.csv', user=1, out_predictions='None', top=5):
+def get_ratings (folder=os.path.join(os.path.dirname(__file__).replace('recommendation_functions','spotlight')), in_model=os.path.join(os.path.dirname(__file__).replace('src','').replace('recommendation_functions','').replace('server','models')[:-1], 'movielens_1M_model.pkl'), in_dataset=os.path.join(os.path.dirname(__file__).replace('src','').replace('recommendation_functions','').replace('server','data')[:-1], 'datasets/movielens_1M.csv'), user=1, out_predictions='None', top=5): 
+
     if folder != 'None':
         import sys  
         sys.path.insert(0, folder)

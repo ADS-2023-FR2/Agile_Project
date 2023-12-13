@@ -3,76 +3,77 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="static/style.css">
-    <title>Your Web Page</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('serve_css', filename='css/style.css') }}">
+    <title>Filmfinder</title>
+    <style>
+        body {
+            background-image: url('{{ url_for('serve_image', filename='banner.jpg') }}');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+    </style>
 
     <style>
-        /* Add CSS styles for two-column layout */
-        .center-container {
-            display: flex;
-            flex-wrap: wrap; /* Allow containers to wrap to the next line on smaller screens */
-            justify-content: space-between;
-            margin: 20px 0; /* Add margin to create space between elements */
-        }
+    /* Add CSS styles for two-container layout */
+    .center-container {
+        display: flex;
+        justify-content: space-between;
+        margin: 20px 0; /* Add margin to create space between elements */
+    }
 
-        .form-container {
-            width: 48%; /* Adjust the width as needed */
-            box-sizing: border-box; /* Include padding and border in width calculation */
-            margin-bottom: 20px; /* Add margin to create space between tables and search bar */
-        }
+    .left-container,
+    .right-container {
+        width: 48%; /* Adjust the width as needed */
+        box-sizing: border-box; /* Include padding and border in width calculation */
+    }
 
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 10px; /* Add a small margin at the top of the table for spacing */
-        }
+    /* Add styles for the tables */
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 10px; /* Add a small margin at the top of the table for spacing */
+    }
 
-        th, td {
-            border: 1px solid #ddd;
-            padding: 8px;
-            text-align: left;
-        }
+    th, td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+    }
 
-        th {
-            background-color: #f2f2f2;
-        }
+    th {
+        background-color: #080101;
+    }
 
-        caption {
-            text-align: left;
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
+    caption {
+        text-align: left;
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
 
-        /* Add styles for the search bar */
-        .search-container {
-            width: 100%;
-            box-sizing: border-box;
-            margin-bottom: 20px; /* Add margin to create space between search bar and tables */
-        }
+    /* Add styles for the search bar */
+    .search-container {
+        width: 100%;
+        box-sizing: border-box;
+        margin-bottom: 20px; /* Add margin to create space between search bar and tables */
+    }
 
-        .search-bar {
-            width: 100%;
-            padding: 10px;
-            box-sizing: border-box;
-        }
+    .search-bar {
+        width: 100%;
+        padding: 10px;
+        box-sizing: border-box;
+    }
 
-        .limited-dimensions {
-            max-width: 100px;
-            max-height: 100px;
-        }
+    .limited-dimensions {
+        max-width: 100px;
+        max-height: 100px;
+    }
     </style>
 </head>
 <body>
 
 <div class="top-container">
-    <h1>MovieMagnet</h1>
-</div>
-
-<!-- Search container -->
-<div class="search-container">
-    <p class="recommendation-intro">Search Users</p>
-    <input type="text" class="search-bar" placeholder="Enter user name...">
-    <!-- You can add additional elements related to user search, such as a button or search results -->
+    <h1>Filmfinder</h1>
 </div>
 
 <div class="center-container">
@@ -179,7 +180,7 @@
                 <!-- Synthetic data for the table -->
                 <tr>
                     {% for record in data %}
-                        {% if record['item_id'] == 1000 %}
+                        {% if record['item_id'] == top5[4] %}
                             <td>
                                 <img src="{{ record['image'] }}" alt="{{ record['item_id'] }}" class="limited-dimensions">
                             </td>
@@ -192,7 +193,7 @@
                 </tr>
                 <tr>
                     {% for record in data %}
-                        {% if record['item_id'] == 434 %}
+                        {% if record['item_id'] == top5[4] %}
                             <td>
                                 <img src="{{ record['image'] }}" alt="{{ record['item_id'] }}" class="limited-dimensions">
                             </td>
@@ -205,7 +206,7 @@
                 </tr>
                 <tr>
                     {% for record in data %}
-                        {% if record['item_id'] == 1645 %}
+                        {% if record['item_id'] == top5[4] %}
                             <td>
                                 <img src="{{ record['image'] }}" alt="{{ record['item_id'] }}" class="limited-dimensions">
                             </td>
@@ -218,7 +219,7 @@
                 </tr>
                 <tr>
                     {% for record in data %}
-                        {% if record['item_id'] == 356 %}
+                        {% if record['item_id'] == top5[4] %}
                             <td>
                                 <img src="{{ record['image'] }}" alt="{{ record['item_id'] }}" class="limited-dimensions">
                             </td>
@@ -231,7 +232,7 @@
                 </tr>
                 <tr>
                     {% for record in data %}
-                        {% if record['item_id'] == 456 %}
+                        {% if record['item_id'] == top5[4] %}
                             <td>
                                 <img src="{{ record['image'] }}" alt="{{ record['item_id'] }}" class="limited-dimensions">
                             </td>
@@ -247,14 +248,6 @@
     </div>
 </div>
 
-<!-- Modal for registration completion -->
-<div id="myModal" class="modal">
-    <div class="modal-content">
-        <span class="close" id="closeModal">&times;</span>
-        <p id="registration-message"></p>
-    </div>
-</div>
-
-<script src="static/utils.js"></script>
+<script src="{{ url_for('serve_js', filename='js/utils.js') }}"></script>
 </body>
 </html>
