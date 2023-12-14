@@ -98,12 +98,32 @@ def hello():
     user_id_link = int(session['user_id_link'])
     print (username)
     top_1user = recommendations(user_id_link)
-    print("Hola")
+    # Access the global user_data variable
+    all_users = user_data['users']
+    # Extract a list of usernames using list comprehension
+    usernames = [user['username'] for user in all_users]
+    print(usernames)
     print(top_1user)
     print(top_1user[2])
     print("Hola")
     avg_ratings = ratings_dataset(dataset)
-    return render_template('hello.html', data=df, top5=top_1user, avg = avg_ratings)
+    return render_template('hello.html', data=df, top5=top_1user, avg = avg_ratings, list_users=usernames, own_user=username)
+
+@app.route('/hello2', methods=['POST'])
+def hello2():
+    selected_user = request.form.get('selectedUser')
+    username = session['username']
+    # Find the user with the matching username
+    matching_user = next((user for user in user_data['users'] if user['username'] == selected_user), None)
+    user_id_link1 = int(session['user_id_link'])
+    user_id_link = matching_user.get('user_id_link')
+    top_1user = get_combined_recommendations(user_id_link1, user_id_link, n=5, c=0.5)
+    avg_ratings = ratings_dataset(dataset)
+    # You can now use the selected_user data as needed
+    # For example, you can pass it to a new template and render that template
+
+    return render_template('hello2.html', data=df, top5=top_1user, avg = avg_ratings, selected_user=matching_user, own_user=username)
+
 
 @app.route('/', methods=['GET', 'POST'])
 def combined_recommendations(user1_id, user2_id, n=5, c=0.5):
