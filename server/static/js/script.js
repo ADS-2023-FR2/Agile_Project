@@ -1,27 +1,3 @@
-// script.js
-
-function getDataFromTest() {
-    fetch('/test', {
-        method: 'GET',
-    })
-    .then(response => {
-        if (!response.ok) {
-            throw new Error('Network response was not ok');
-        }
-        return response.json();
-    })
-    .then(jsonData => {
-        // Hier können Sie die Logik zum Konvertieren des JSON-Arrays in ein Integer-Array einfügen
-        const integerArray = jsonData.map(item => parseInt(item, 10));
-        console.log('Integer Array:', integerArray);
-        return integerArray
-    })
-    .catch(error => {
-        console.error('Error fetching test data:', error);
-    });
-}
-
-
 
 document.addEventListener('DOMContentLoaded', function() {
 
@@ -36,11 +12,14 @@ document.addEventListener('DOMContentLoaded', function() {
             var own_user_id;
             var friend_user_id;
             own_user_id = hiddenIntegerField.value;
-            friend_user_id = friend_user_id = parseInt(searchForm.querySelector('.search-bar').value, 10);
+            //the next line, uses the search bar and interpretets the input as integer number. Maybe we need to some code to converte the names to the corect intger ids.
+            friend_user_id = parseInt(searchForm.querySelector('.search-bar').value, 10);
         
-            console.log('User2 ID:', friend_user_id);
+            //console.log('User2 ID:', friend_user_id);
 
         //now take both user ids and call the new recomendation to watch together with a friend.
+        //as return I expect the combinded recomendation function. 
+        //I obtain the own_user_id form a hidden variable in the hello.html file. and the friend_user_id from the search bar.
         fetch('/combined_recommendations?own_user_id=' + own_user_id + '&friend_user_id=' + friend_user_id, {
             method: 'GET',
         })
@@ -56,11 +35,11 @@ document.addEventListener('DOMContentLoaded', function() {
                 console.log('Integer Array with new recomendation values:', integerArray);
                 //combined_Recomendations = integerArray;
                 //console.log('combined_Recomendations: ', combined_Recomendations);
-                console.log(recomendation_array_input);
+                //console.log(recomendation_array_input);
             
                 //gives recomendation array the lenth and the values of the old recomendation array
                 recomendation_array = JSON.parse(recomendation_array_input.value); 
-                for (var i = 0; i <5; i++) { //updates the values in recomendation_array with the new recomendation value
+                for (var i = 0; i <5; i++) { //updates the watch together values in recomendation_array with the new recomendation values
                     recomendation_array[i+5] = integerArray[i];
                 }
                 // Beispiel: Füge eine neue Zahl hinzu
@@ -80,9 +59,9 @@ document.addEventListener('DOMContentLoaded', function() {
             .then(function(response) {
                 console.log("then consolen output")
                 if (response.ok) {
-                    //the hello page will be reloaded, if the response is possible.
-                    console.log("ok response")
-                    window.location.href = '/hello?updatedArray=' + encodeURIComponent(JSON.stringify(recomendation_array));
+                    //the hello page will be reloaded, if the response was received.
+                    //console.log("ok response")
+                    window.location.href = '/hello?updatedArray=' + encodeURIComponent(JSON.stringify(recomendation_array)); //this reload finaly the recomendation array
                 }
             })
 

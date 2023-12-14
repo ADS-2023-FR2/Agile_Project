@@ -82,11 +82,15 @@ def serve_css(filename):
 def hello():
     #print("hello was called")
     updated_array_str = request.args.get('updatedArray', None)
+    #my idead is: if the hello function receive the "updated_array_str". The page "knows" that it is reloaded and no further calculation is needed.
     if updated_array_str:
         hidden_integer_array = json.loads(updated_array_str)
+    #if the hello function not receive the "updated_array_str" it was called the first time and need to calculate the values for the single recomendation
+    #for the combined recomendation. the values needs to be hardcoded to a speciffic value. (Maybe you can add a blank movie picture and title for no movie recomendation to the list.)
     else: 
         hidden_integer_array =[11, 20, 30, 40, 50, 11, 20, 30, 40, 50]
     #print("handover recomedations:"+ str(hidden_integer_array))
+    #I don not know how to get the user_id, so i decided to hardcode this variable. Please use the real user id, so that it can be stored as input variable in hello. html.
     sample_user_id = 2
     return render_template('hello.html', data=df.to_dict(orient='records'), hiddenIntegerArray=hidden_integer_array, own_user_id=sample_user_id)
 
@@ -102,10 +106,13 @@ def combined_recommendations():
     friend_user_id = request.args.get('friend_user_id')
     n = 5
     c = 0.5
+    #here please use the combined recomendation function instead of the hardcoded array
+    #i think combined recomendation it was implemented by david or sergi.
     #comb_rec = get_combined_recommendations(own_user_id, friend_user_id, n, c)
     comb_rec = [101,102,103,104,105]
     print("userids: " + str(own_user_id) + " / " +str(friend_user_id))
     print(friend_user_id)
+    #the output should contain a list with 5 movie ids.
     return jsonify(comb_rec)
 
 def load_data_from_csv(csv_file):

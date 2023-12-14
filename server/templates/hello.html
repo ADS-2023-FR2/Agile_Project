@@ -6,6 +6,8 @@
     <!-- <link rel="stylesheet" href="static/css/style.css"> -->
     <title>Your Web Page</title>
 
+
+    <!-- My two hidden variable, i like to store as input. -->
     <input type="hidden" id="hiddenIntegerArray" name="hiddenIntegerArray" value="{{ hiddenIntegerArray}}">
     <input type="hidden" id="hidden_ownuserid_int" name="own_user_id" value="{{own_user_id}}">
     <style>
@@ -107,6 +109,7 @@
                   
                 <tr>
                     {% for record in data %}
+                        <!-- Sergi used here the same method, but a diffrent variable name. -->
                         {% if record['item_id'] == hiddenIntegerArray[0] %}
                             <td>
                                 <img src="{{ record['image'] }}" alt="{{ record['item_id'] }}" class="limited-dimensions">
