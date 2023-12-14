@@ -80,10 +80,13 @@ def serve_css(filename):
 
 @app.route('/hello', methods=['GET'])
 def hello():
-    print("hello wurde aufgerufen")
+    #print("hello was called")
     updated_array_str = request.args.get('updatedArray', None)
-    hidden_integer_array = json.loads(updated_array_str) if updated_array_str else [11, 20, 30, 40, 50, 11, 20, 30, 40, 50]
-    print("übergabe"+ str(hidden_integer_array))
+    if updated_array_str:
+        hidden_integer_array = json.loads(updated_array_str)
+    else: 
+        hidden_integer_array =[11, 20, 30, 40, 50, 11, 20, 30, 40, 50]
+    #print("handover recomedations:"+ str(hidden_integer_array))
     sample_user_id = 2
     return render_template('hello.html', data=df.to_dict(orient='records'), hiddenIntegerArray=hidden_integer_array, own_user_id=sample_user_id)
 
