@@ -84,27 +84,8 @@ def hello():
     updated_array_str = request.args.get('updatedArray', None)
     hidden_integer_array = json.loads(updated_array_str) if updated_array_str else [11, 20, 30, 40, 50, 11, 20, 30, 40, 50]
     print("übergabe"+ str(hidden_integer_array))
-    return render_template('hello.html', data=df.to_dict(orient='records'), hiddenIntegerArray=hidden_integer_array)
-
-
-@app.route('/get_list', methods=['GET'])
-def get_list():
-    # Hier können Sie Ihre tatsächliche Logik zur Generierung der Liste implementieren
-    print('Hello world')
-    my_list = ["Item 1", "Item 2", "Item 3", "Item 4", "Item 5"]
-    return jsonify({'top_recommendations': my_list})
-
-@app.route('/test', methods=['GET', 'POST'])
-def test():
-    user1_id = request.args.get('user1_id')
-    user2_id = request.args.get('user2_id')
-    n = 5
-    c = 0.5
-    #comb_rec = get_combined_recommendations(user1_id, user2_id, n, c)
-    comb_rec = [101,102,103,104,105]
-    print("userids: " + str(user1_id) + " / " +str(user2_id))
-    print(user2_id)
-    return jsonify(comb_rec)
+    sample_user_id = 2
+    return render_template('hello.html', data=df.to_dict(orient='records'), hiddenIntegerArray=hidden_integer_array, own_user_id=sample_user_id)
 
 @app.route('/update_array', methods=['POST'])
 def update_array():
@@ -114,14 +95,15 @@ def update_array():
 
 @app.route('/combined_recommendations', methods=['GET'])
 def combined_recommendations():
-    user1_id = request.args.get('user1_id')
-    user2_id = request.args.get('user2_id')
+    own_user_id = request.args.get('own_user_id')
+    friend_user_id = request.args.get('friend_user_id')
     n = 5
     c = 0.5
-    #comb_rec = get_combined_recommendations(user1_id, user2_id, n, c)
-    comb_rec = ["Item a", "Item b", "Item c", "Item d", "Item e"]
-    print(comb_rec)
-    return jsonify({'top_recommendations': comb_rec})
+    #comb_rec = get_combined_recommendations(own_user_id, friend_user_id, n, c)
+    comb_rec = [101,102,103,104,105]
+    print("userids: " + str(own_user_id) + " / " +str(friend_user_id))
+    print(friend_user_id)
+    return jsonify(comb_rec)
 
 def load_data_from_csv(csv_file):
     data = {}
