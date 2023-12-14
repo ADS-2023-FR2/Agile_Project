@@ -11,15 +11,6 @@ from src.recommendation_functions.recommendations_user import get_ratings
 app = Flask(__name__)
 app.secret_key = 'your_secret_key'  # Change this to a secure secret key
 
-# Sample movie data (replace this with your actual recommendation logic)
-top_movies = [
-    {'title': 'Movie 1', 'genre': 'Action'},
-    {'title': 'Movie 2', 'genre': 'Drama'},
-    {'title': 'Movie 3', 'genre': 'Comedy'},
-    {'title': 'Movie 4', 'genre': 'Sci-Fi'},
-    {'title': 'Movie 5', 'genre': 'Thriller'}
-]
-
 # Read the CSV file using a relative path
 df = pd.read_csv(os.path.join(os.path.dirname(__file__), 'images/m1movidata.csv'))
 
@@ -52,8 +43,11 @@ def login():
     for user in user_data['users']:
         if user['username'] == username and user['password'] == password:
             session['username'] = username
+            # Check if 'user_id_link' is present in the user data
+            if 'user_id_link' in user:
+                session['user_id_link'] = user['user_id_link']
             return jsonify({'success': True, 'message': 'Login successful'})
-    
+
     return jsonify({'success': False, 'message': 'Invalid login'})
 
 # Define the registration route
@@ -62,27 +56,26 @@ def register():
     reg_username = request.form['reg_username']
     reg_password = request.form['reg_password']
 
-    # Append the new user to the user_data list
-    user_data['users'].append({
-        'username': reg_username,
-        'password': reg_password
-    })
-
     #Here we create the link
     while True:
         random = np.random.randint(nratings)
-        user_id_link = dataset['user_id'][random]
+        user_id_link = int(dataset['user_id'][random])
         if user_id_link not in user_link_list:
             user_link_list.append(user_id_link)
             links[reg_username] = user_id_link
             break
+    print(user_id_link)
+    # Append the new user to the user_data list
+    user_data['users'].append({
+        'username': reg_username,
+        'password': reg_password,
+        'user_id_link': user_id_link
+    })
 
     # Save the updated user data to the JSON file
     with open('./users.json', 'w') as user_file:
-        json.dump(user_data, user_file, indent=2)
+        json.dump(user_data, user_file, indent=2, default=str)
     
-    #
-
     print (links)
 
     return jsonify({'success': True})
@@ -102,10 +95,15 @@ def serve_css(filename):
 @app.route('/hello', methods=['GET'])
 def hello():
     username = session['username']
+    user_id_link = int(session['user_id_link'])
     print (username)
-    top_1user = recommendations(links[username])
+    top_1user = recommendations(user_id_link)
+    print("Hola")
+    print(top_1user)
+    print(top_1user[2])
+    print("Hola")
     avg_ratings = ratings_dataset(dataset)
-    return render_template('hello.html', data=df, top5=top_1user, avg = avg_ratings)#.to_dict(orient='records'), top5=top_1user)
+    return render_template('hello.html', data=df, top5=top_1user, avg = avg_ratings)
 
 @app.route('/', methods=['GET', 'POST'])
 def combined_recommendations(user1_id, user2_id, n=5, c=0.5):
@@ -113,7 +111,7 @@ def combined_recommendations(user1_id, user2_id, n=5, c=0.5):
     return jsonify({'top_recommendations': comb_rec})
 
 @app.route('/', methods=['GET', 'POST'])
-def recommendations(user1_id, top=5):
+def recommendations(user1_id):
     _,rec = get_ratings(user = user1_id)
     return rec
     #return jsonify({'top_recommendations': rec})

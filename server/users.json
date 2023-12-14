@@ -1,0 +1,34 @@
+{
+  "users": [
+    {
+      "username": "polG",
+      "password": "123",
+      "user_id_link": 434
+    },
+    {
+      "username": "polR",
+      "password": "123",
+      "user_id_link": 5111
+    },
+    {
+      "username": "Ana",
+      "password": "123",
+      "user_id_link": 4016
+    },
+    {
+      "username": "david",
+      "password": "123",
+      "user_id_link": 4808
+    },
+    {
+      "username": "sergi",
+      "password": "123",
+      "user_id_link": 3590
+    },
+    {
+      "username": "joachim",
+      "password": "123",
+      "user_id_link": 12
+    }
+  ]
+}
