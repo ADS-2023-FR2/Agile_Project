@@ -64,3 +64,76 @@ closeModal.addEventListener('click', function() {
     const modal = document.getElementById('myModal');
     modal.style.display = 'none';
 });
+
+document.addEventListener('DOMContentLoaded', function () {
+    const userDropdown = document.getElementById('userDropdown');
+    const selectedUserDiv = document.getElementById('selectedUser');
+    const searchContainer = document.getElementById('searchContainer');
+    let selectedUser = null;
+
+    // Fetch all users when the page loads
+    fetch('/search_users')
+        .then(response => response.json())
+        .then(users => {
+            displayAllUsers(users.results);
+        })
+        .catch(error => console.error('Error:', error));
+
+    function displayAllUsers(users) {
+        // Clear previous options
+        userDropdown.innerHTML = '';
+
+        // Add a default option
+        const defaultOption = document.createElement('option');
+        defaultOption.textContent = 'Select a user to get a combined recomendation:';
+        userDropdown.appendChild(defaultOption);
+
+        // Add users to the dropdown
+        users.forEach(username => {
+            const option = document.createElement('option');
+            option.textContent = username;
+            userDropdown.appendChild(option);
+        });
+
+        // Event listener for dropdown change
+        userDropdown.addEventListener('change', () => {
+            const selectedUsername = userDropdown.value;
+            const selectedUser = { username: selectedUsername };
+            displaySelectedUser(selectedUser);
+        });
+    }
+
+    function displaySelectedUser(user) {
+        searchContainer.style.display = 'block'; // Show search bar
+        selectedUserDiv.style.display = 'block'; // Show selected user info
+        selectedUserDiv.innerHTML = `<p>Select a user to get a combined recomendation: ${user.username}</p>`;
+        // Add more details here if needed
+    }
+});
+
+function submitForm() {
+    const myDropdown = document.getElementById('myDropdown');
+    const selectedUser = myDropdown.value;
+
+    // Create a form dynamically
+    const form = document.createElement('form');
+    form.method = 'POST';
+    form.action = '/hello2'; // Replace with the actual URL of the new page
+
+    // Create an input field to hold the selected user value
+    const input = document.createElement('input');
+    input.type = 'hidden';
+    input.name = 'selectedUser';
+    input.value = selectedUser;
+
+    // Append the input field to the form
+    form.appendChild(input);
+
+    // Append the form to the document and submit it
+    document.body.appendChild(form);
+    form.submit();
+}
+function backForm() {
+    // Create a form dynamically
+    window.location.href = '/hello';
+}

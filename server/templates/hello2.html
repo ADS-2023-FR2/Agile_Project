@@ -72,7 +72,7 @@
     <!-- Left container for recommendations -->
     <div class="left-container">
         <div class="form-container">
-            <p class="recommendation-intro">Top 5 Recommendations for {{ own_user}}</p>
+            <p class="recommendation-intro">Top 5 Recommendations for {{ own_user}} combined with {{ selected_user['username']}}</p>
             <table>
                 <caption>Movies Recommended by Page</caption>
                 <thead>
@@ -158,13 +158,7 @@
     <!-- Search bar -->
     <div class="right-container">
         <div class="form-container">
-            <label for="myDropdown">Select a user to get a combined recomendation:</label>
-            <select id="myDropdown">
-                {% for username in list_users %}
-                    <option value="{{ username }}">{{ username }}</option>
-                {% endfor %}
-            </select>
-            <button id="submitButton" onclick="submitForm()">Submit</button>
+            <button id="backbutton" onclick="backForm()">Back</button>
         </div>
     </div>
 </div>
