@@ -66,19 +66,9 @@ def get_recommendations_from_dicts(rec1, rec2, n=None, c=0.5):
 
 def get_combined_recommendations(user1_id, user2_id, n=None, c=0.5, all=False):
 
-    rec1, _ = get_ratings(folder='../spotlight',
-                         in_model='../../models/movielens_1M_model.pkl',
-                         in_dataset='../../data/datasets/movielens_1M.csv',
-                         user=user1_id,
-                         out_predictions='None',
-                         top=0)
+    rec1, _ = get_ratings(user=user1_id)
 
-    rec2, _ = get_ratings(folder='../spotlight',
-                        in_model='../../models/movielens_1M_model.pkl',
-                        in_dataset='../../data/datasets/movielens_1M.csv',
-                        user=user2_id,
-                        out_predictions='None',
-                        top=0)
+    rec2, _ = get_ratings(user=user2_id)
 
     comb_rec = get_recommendations_from_dicts(rec1, rec2, n=5, c=0.5)
 
