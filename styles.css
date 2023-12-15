@@ -1,0 +1,15 @@
+#helpButton {
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+#helpText {
+  display: none;
+  margin-top: 10px;
+}
+
+.hidden {
+  display: none;
+}
+
